@@ -693,6 +693,156 @@ section {
   padding-left: 0;
 }
 
+/* Portfolio Grid & Card Styles */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.project-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+    overflow: hidden;
+}
+.project-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 2px 12px rgba(0,0,0,0.10);
+    transform: translateY(-4px) scale(1.02);
+}
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    color: var(--color-black);
+    border-bottom: 2px solid #eee;
+}
+.project-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tech-stack {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+.project-desc {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+.project-actions {
+    display: flex;
+    gap: 1rem;
+}
+.action-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
+}
+.action-btn:hover {
+    background: #0056b3;
+}
+
+/* Modal text color fix */
+.modern-modal-content,
+.modal-content {
+    color: #222 !important;
+    background: #fff !important;
+}
+
+.modal-header h2,
+.tech-badges ,
+.project-overview,
+.feature-list li,
+.modal-actions .action-btn {
+    color: #222 !important;
+}
+.badge
+{
+  color: white;
+}
+
+.feature-list i {
+    color: #007bff !important;
+}
+
+.modal-header .close-btn i {
+    color: #333 !important;
+}
+
+/* If you use a dark theme, override only background, not text */
+body.dark-mode .modern-modal-content,
+body.dark-mode .modal-content {
+    background: #222 !important;
+    color: #fff !important;
+}
+body.dark-mode .modal-header h2,
+body.dark-mode .tech-badges .badge,
+body.dark-mode .project-overview,
+body.dark-mode .feature-list li,
+body.dark-mode .modal-actions .action-btn {
+    color: #fff !important;
+}
+
+/* Force project card titles to stay black in all modes */
+.project-content h3 {
+    color: #111 !important;
+}
+body.dark-mode .project-content h3 {
+    color: #111 !important;
+}
+
+/* Invert project card colors for light/dark mode */
+.light-mode .project-card {
+    background: #222 !important;
+    color: #fff !important;
+}
+.light-mode .project-card h3,
+.light-mode .project-card .tech-stack,
+.light-mode .project-card .project-desc,
+.light-mode .project-card .action-btn {
+    color: #fff !important;
+}
+.light-mode .project-card .action-btn {
+    background: #444;
+}
+.light-mode .project-card .action-btn:hover {
+    background: #2dc4c9;
+}
+
+/* Keep dark mode as white cards with dark text */
+body.dark-mode .project-card {
+    background: #fff !important;
+    color: #222 !important;
+}
+body.dark-mode .project-card h3,
+body.dark-mode .project-card .tech-stack,
+body.dark-mode .project-card .project-desc,
+body.dark-mode .project-card .action-btn {
+    color: #222 !important;
+}
+body.dark-mode .project-card .action-btn {
+    background: #007bff;
+    color: #fff;
+}
+body.dark-mode .project-card .action-btn:hover {
+    background: #0056b3;
+}
+
 @media screen and (max-width: 600px) {
   header {
     padding: 0 !important;
@@ -1068,4 +1218,311 @@ button
 
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
+}
+
+/* Modern Modal Styles */
+.modern-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30, 30, 40, 0.85);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.modern-modal-content {
+    background: #fff;
+    border-radius: 18px;
+    max-width: 900px;
+    width: 95vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.4s;
+}
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem 0.5rem 2rem;
+    background: #f7f8fa;
+    border-bottom: 1px solid #eee;
+}
+.tech-badges .badge {
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-btn:hover { color: #007bff; }
+.modal-body {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+.modal-left {
+    flex: 1.2;
+    min-width: 280px;
+}
+.modal-right {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.project-overview {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+.feature-list li {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.feature-list i {
+    color: #007bff;
+    font-size: 1.1rem;
+}
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+.action-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s;
+}
+.action-btn:hover {
+    background: #0056b3;
+}
+@media (max-width: 700px) {
+    .modal-body {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .modal-header {
+        flex-direction: column;
+        gap: 0.7rem;
+        padding: 1rem;
+    }
+}
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(30,30,40,0.95);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+.lightbox-modal img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    background: #fff;
+    display: block;
+    margin: auto;
+}
+
+/* Stronger, more visible shadow for project cards */
+.project-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.12);
+    transition: box-shadow 0.2s, transform 0.2s;
+    overflow: hidden;
+}
+.project-card:hover {
+    box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 4px 24px rgba(0,0,0,0.18);
+}
+
+/* Dark mode support: even stronger shadow for contrast */
+body.dark-mode .project-card {
+    background: #222;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 2px 12px rgba(0,0,0,0.38);
+}
+body.dark-mode .project-card:hover {
+    box-shadow: 0 16px 48px rgba(0,0,0,0.75), 0 4px 24px rgba(0,0,0,0.55);
+}
+
+.blender-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.blender-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+.blender-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+.blender-media {
+    width: 100%;
+    height: 300px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blender-content {
+    padding: 1.2rem;
+}
+.blender-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+.blender-content p {
+    color: #333;
+    font-size: 1rem;
+}
+@media (max-width: 700px) {
+    .blender-media { height: 200px; }
+}
+
+.model-viewer-bg {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgb(164, 199, 208) 0%, rgba(99,110,114,0.8) 50%, rgb(127, 65, 129) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.model-viewer-bg model-viewer {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+.project-image video {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    background: #f7f7f7;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 0.5rem;
+    }
+    .portfolio-grid, .blender-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .project-card, .blender-card {
+        margin-bottom: 1rem;
+        border-radius: 12px;
+    }
+    .project-image img,
+    .project-image video,
+    .blender-media video,
+    .model-viewer-bg,
+    .model-viewer-bg model-viewer {
+        max-height: 160px;
+        border-radius: 10px;
+    }
+    .project-content, .blender-content {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+    .main-title h2 {
+        font-size: 1.2rem;
+    }
+    .controls {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .control {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+    }
+    .modal-body {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    .modal-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+    .action-btn, .close-btn, .theme-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+        border-radius: 10px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .right-header, .left-header {
+        width: 100%;
+        padding: 0.5rem 0;
+        margin-bottom: 0.5rem;
+    }
+    .contact-container {
+        padding: 0.5rem;
+    }
+    .contact-content-con {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
