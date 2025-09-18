@@ -1526,3 +1526,80 @@ body.dark-mode .project-card:hover {
         gap: 1rem;
     }
 }
+@media (max-width: 700px) {
+  .modern-modal-content {
+    max-width: 98vw;
+    width: 100%;
+    border-radius: 12px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem 0.7rem 0.5rem 0.7rem;
+  }
+  .modal-header h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .tech-badges .badge {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+  .modal-body {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.7rem;
+  }
+  .modal-left {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 0.7rem;
+  }
+  .image-slider,
+  .model-viewer-bg,
+  .modal-left video,
+  .modal-left img,
+  .modal-left model-viewer {
+    width: 100% !important;
+    height: 160px !important;
+    max-height: 160px;
+    border-radius: 10px;
+  }
+  .modal-right {
+    width: 100%;
+    padding: 0;
+  }
+  .project-overview {
+    font-size: 0.98rem;
+    margin-bottom: 0.7rem;
+  }
+  .feature-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.7rem;
+  }
+  .action-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    width: 100%;
+    justify-content: center;
+  }
+  .close-btn {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.7rem;
+    align-self: flex-end;
+  }
+}
+
