@@ -3,765 +3,1441 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles/styles-v3.css">
+    <meta name="description" content="Mhamd Ghanoum, Backend Engineer specializing in NestJS, TypeScript, PostgreSQL, Redis, Docker, and production backends. Available for Backend Engineer roles in Germany.">
+    <title>Mhamd Ghanoum — Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #080c14;
+            --surface: #0d1320;
+            --surface-2: #111827;
+            --surface-3: #151e2d;
+            --border: #243044;
+            --text: #f4f7fb;
+            --muted: #9aa8bb;
+            --muted-2: #718096;
+            --accent: #4F8EF7;
+            --accent-soft: rgba(79, 142, 247, 0.13);
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+            --max: 1120px;
+        }
+
+        body.light-mode {
+            color-scheme: light;
+            --bg: #f7f9fc;
+            --surface: #ffffff;
+            --surface-2: #f1f5f9;
+            --surface-3: #eaf0f8;
+            --border: #d9e2ee;
+            --text: #111827;
+            --muted: #4b5563;
+            --muted-2: #64748b;
+            --accent-soft: rgba(79, 142, 247, 0.14);
+            --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            transition: background 180ms ease, color 180ms ease;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            background: color-mix(in srgb, var(--bg) 91%, transparent);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-shell {
+            width: min(var(--max), calc(100% - 40px));
+            min-height: 68px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 172px;
+        }
+
+        .brand strong {
+            font-size: 0.96rem;
+            line-height: 1.2;
+            letter-spacing: 0;
+        }
+
+        .brand span {
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.2;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 5px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .nav-link {
+            min-width: 78px;
+            border-radius: 6px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            padding: 11px 14px;
+            transition: background 160ms ease, color 160ms ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text);
+            background: var(--surface-3);
+        }
+
+        .theme-btn {
+            width: 42px;
+            height: 42px;
+            display: inline-grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--muted);
+            cursor: pointer;
+            transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        main {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 92px 0;
+            scroll-margin-top: 86px;
+        }
+
+        .hero {
+            min-height: calc(100vh - 69px);
+            display: grid;
+            align-items: center;
+            padding-top: 84px;
+        }
+
+        .hero-inner {
+            max-width: 850px;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 24px;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .availability::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin-bottom: 16px;
+            font-size: clamp(3.8rem, 8vw, 7.25rem);
+            line-height: 0.94;
+            letter-spacing: 0;
+        }
+
+        .hero-stack {
+            margin: 0 0 24px;
+            color: var(--accent);
+            font-size: clamp(1.08rem, 2vw, 1.4rem);
+            font-weight: 700;
+        }
+
+        .hero-copy {
+            max-width: 760px;
+            margin-bottom: 32px;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.7vw, 1.16rem);
+        }
+
+        .hero-actions,
+        .project-links,
+        .modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn,
+        .link-btn,
+        .detail-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.93rem;
+            font-weight: 700;
+            padding: 10px 14px;
+            transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+        }
+
+        .btn.primary,
+        .link-btn.primary {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .btn:hover,
+        .link-btn:hover,
+        .detail-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .btn.primary:hover,
+        .link-btn.primary:hover {
+            color: #ffffff;
+            background: var(--accent);
+        }
+
+        .section-kicker {
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-bottom: 14px;
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.05;
+            letter-spacing: 0;
+        }
+
+        .section-intro {
+            max-width: 710px;
+            margin-bottom: 36px;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            min-height: 100%;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 24px;
+            transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+        }
+
+        .project-card:hover {
+            border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+            transform: translateY(-2px);
+        }
+
+        .project-card.featured {
+            grid-column: 1 / -1;
+            background: var(--surface);
+            padding: clamp(24px, 4vw, 34px);
+        }
+
+        .project-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .project-title {
+            margin-bottom: 12px;
+            font-size: clamp(1.28rem, 2vw, 1.65rem);
+            line-height: 1.2;
+        }
+
+        .project-card.featured .project-title {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 0.76rem;
+            font-weight: 800;
+            line-height: 1;
+            padding: 8px 10px;
+            white-space: nowrap;
+        }
+
+        .tag-list,
+        .highlight-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tag,
+        .highlight-list li {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-2);
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1;
+            padding: 8px 10px;
+        }
+
+        .project-desc {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .project-body {
+            display: grid;
+            gap: 18px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .skill-group {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 24px;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tags span {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface-2);
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 10px;
+        }
+
+        .contact-panel {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: clamp(24px, 4vw, 34px);
+        }
+
+        .contact-panel h2 {
+            margin-bottom: 12px;
+        }
+
+        .contact-note {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: grid;
+            grid-template-columns: 26px 1fr;
+            gap: 12px;
+            align-items: start;
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(3, 7, 14, 0.78);
+            backdrop-filter: blur(12px);
+        }
+
+        .modal-content {
+            width: min(1050px, 100%);
+            max-height: min(86vh, 900px);
+            overflow: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+            background: color-mix(in srgb, var(--surface) 94%, transparent);
+            backdrop-filter: blur(16px);
+            padding: 20px;
+        }
+
+        .modal-title-wrap {
+            display: grid;
+            gap: 10px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            line-height: 1.2;
+        }
+
+        .close-btn {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-2);
+            color: var(--muted);
+            cursor: pointer;
+            transition: border-color 160ms ease, color 160ms ease;
+        }
+
+        .close-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+            gap: 24px;
+            padding: 20px;
+        }
+
+        .image-slider {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-2);
+            min-height: 390px;
+        }
+
+        .slide {
+            display: none;
+            min-height: 390px;
+        }
+
+        .slide img,
+        .slide video {
+            width: 100%;
+            height: 390px;
+            display: block;
+            object-fit: contain;
+            background: var(--surface-2);
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--surface) 82%, transparent);
+            color: var(--text);
+            cursor: pointer;
+            transform: translateY(-50%);
+            user-select: none;
+        }
+
+        .prev {
+            left: 12px;
+        }
+
+        .next {
+            right: 12px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .modal-copy {
+            display: grid;
+            align-content: start;
+            gap: 18px;
+        }
+
+        .modal-copy p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 10px;
+            color: var(--muted);
+        }
+
+        .feature-list i {
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .architecture-map {
+            display: grid;
+            gap: 14px;
+            align-content: start;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-2);
+            padding: 18px;
+        }
+
+        .architecture-showcase {
+            display: grid;
+            gap: 16px;
+            align-content: start;
+        }
+
+        .architecture-image {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-2);
+        }
+
+        .architecture-image img {
+            display: block;
+            width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            background: var(--surface-2);
+        }
+
+        .architecture-node {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 14px;
+        }
+
+        .architecture-node strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .architecture-node span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .architecture-branch {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            position: relative;
+        }
+
+        .architecture-branch::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            width: 1px;
+            height: 8px;
+            background: var(--border);
+        }
+
+        .architecture-node.accented {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.86);
+        }
+
+        .lightbox-modal img {
+            max-width: min(1100px, 96vw);
+            max-height: 90vh;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            object-fit: contain;
+        }
+
+        @media (max-width: 840px) {
+            .nav-shell {
+                width: min(100% - 28px, var(--max));
+                min-height: auto;
+                padding: 12px 0;
+                align-items: flex-start;
+            }
+
+            .brand {
+                min-width: 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: 14px;
+                right: 14px;
+                bottom: 14px;
+                z-index: 110;
+                justify-content: space-between;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-link {
+                min-width: 0;
+                flex: 1;
+                padding: 11px 8px;
+                font-size: 0.8rem;
+            }
+
+            main {
+                width: min(100% - 28px, var(--max));
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 74px;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .contact-panel,
+            .modal-body,
+            .architecture-branch {
+                grid-template-columns: 1fr;
+            }
+
+            .project-top {
+                flex-direction: column;
+            }
+
+            .modal {
+                padding: 12px;
+            }
+
+            .modal-content {
+                max-height: 88vh;
+            }
+
+            .image-slider,
+            .slide {
+                min-height: 280px;
+            }
+
+            .slide img,
+            .slide video {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            h1 {
+                font-size: 3.35rem;
+            }
+
+            .hero-actions,
+            .project-links,
+            .modal-actions {
+                width: 100%;
+            }
+
+            .btn,
+            .link-btn,
+            .detail-btn {
+                flex: 1 1 auto;
+            }
+
+            .project-card,
+            .skill-group,
+            .contact-panel {
+                padding: 18px;
+            }
+        }
+    </style>
 </head>
 
-<body class="main-content">
-    <header class="container header active" id="home">
-        <div class="header-content">
-            <div class="left-header">
-                <div class="h-shape"></div>
-               
-            </div>
-           <div class="right-header">
-  <h1 class="name">
-    Hi, I'm <span>Mhamd Ghanoum.</span><br>
-    Full‑Stack Engineer & 3D Web Developer
-  </h1>
-  <p>
-I craft high‑quality digital experiences and scalable systems that empower users. With a strong foundation in both frontend and backend development, I specialize in building immersive web applications, mobile platforms, and interactive 3D tools that combine technical precision with user‑centric design.  </p>
-  <p>
-    My tech stack includes <strong>Next.js</strong>, <strong>Three.js</strong>, <strong>Flutter</strong>, <strong>NestJS</strong>, <strong>Laravel</strong>, and <strong>Docker</strong>. I’ve led projects across medical, social, and e‑commerce sectors — from multi‑store delivery apps to real‑time 3D product configurators.
-  </p>
-  <p>
-    I’m passionate about innovation, design, and technical depth. Whether it’s exporting 3D models from Blender, architecting backend microservices, or optimizing mobile performance, I bring creativity and precision to every build.
-  </p>
-  <p>
-     Let’s create something extraordinary together.
-  </p>
-</div>
-
-        </div>
-    </header>
-    <main>
-        <section class="container about" id="about">
-            <div class="main-title">
-                <h2>About <span>me</span><span class="bg-text">my stats</span></h2>
-            </div>
-            <div class="about-container">
-                <div class="left-about">
- Full‑Stack Engineer blending backend precision with frontend creativity. I build  digital experiences, scalable systems, and tools that empower users. My expertise spans 3D web development with Next.js and Three.js, backend architecture with Laravel and NestJS, and mobile apps with Flutter. I thrive on innovation, design, and technical depth — always pushing boundaries to deliver extraordinary results.
-                </div>
-              
-            </div>
-            <div class="about-stats">
-                <h4 class="stat-title">My Skills</h4>
-                <div class="progress-bars">
-                    <div class="progress-bar">
-                        <p class="prog-title">Frontend: Flutter, Next.js, HTML/CSS, JavaScript, Three.js
-
-</p>
-
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Backend: Laravel (PHP), NestJS (TypeScript), REST APIs
-
-</p>
-
-                    </div>
-                    <div class="progress-bar">
-                        <p class="prog-title">Databases: MySQL, PostgreSQL
-
-</p>
-
-                    </div>
-
-                    <div class="progress-bar">
-                        <p class="prog-title">DevOps: Docker, Git
-
-</p>
-                    <div class="progress-bar">
-                        <p class="prog-title">3D & Design: Blender, Figma
-
-</p>
-
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">My Timeline</h4>
-            <div class="timeline">
-                
-              <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2024–Present</p>
-                    <h5>3D Web Developer & Backend Engineer <span> Freelancer</span></h5>
-                    <p>
-                     <ol>
-                        <li>
-                     Designed and exported 3D models in Blender for web integration
-                        </li>
-                        <li>
-                    Built interactive web experiences using Next.js & Three.js
-
-                        </li>
-                    </ol>
-                     
-
-                    Migrated backend to NestJS microservices
-
-                    Containerized apps with Docker
-
-                    Created a 3D T‑shirt design tool with real‑time rendering
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2021-present</p>
-                    <h5>Web and mobile developer<span> Freelancer </span></h5>
-                    <p>
-                       Full‑stack apps with Laravel & Flutter for medical, social, and e‑commerce sectors
-
-Medical center app (Flutter + GetX)
-
-Social media journey platform (Laravel + Flutter)
-
-Multi‑store e‑commerce app with delivery tracking, maps, and admin dashboards
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <div class="tl-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <p class="tl-duration">2017 - 2019</p>
-                    <h5>Earlier experience<span> - University</span></h5>
-                    <p>
-                      (Java Desktop Programs & Arduino )
-                    </p>
-                </div>
-
-
-            </div>
-        </section>
-        <section class="container" id="portfolio">
-            <div class="main-title">
-                <h2>My <span>Portfolio</span><span class="bg-text">My Work</span></h2>
-            </div>
-            <p class="port-text">
-        Platforms I’ve built from the ground up — from backend architecture to UI polish.
-    </p>
-    <div class="portfolio-grid">
-        <div class="project-card">
-    <div class="project-image">
-        <video controls poster="img/blender_community_badge_orange.png" style="width:100%;height:220px;object-fit:cover;border-radius:14px;">
-            <source src="videos/shirt-v.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <div class="project-content">
-        <h3>3D T-shirt Design Tool</h3>
-        <p class="tech-stack">Blender, Next.js, Three.js, NestJS, PostgreSQL, Docker</p>
-        <p class="project-desc">
-            Interactive 3D T-shirt designer with real-time color, image, and text decal customization. Built with Blender (UV mapping, shading), Next.js & Three.js for the scene, NestJS backend, and PostgreSQL database. Users can change shirt color, add images/text decals, adjust their position/size, and style text. All designs are stored and managed in a Dockerized backend.
-        </p>
-        <div class="project-actions">
-            <a href="https://github.com/Mhamd021/3d-tshirt-tool" target="_blank" class="action-btn">
-                <i class="fab fa-github"></i> Code
+<body>
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Primary navigation">
+            <a class="brand" href="#home" aria-label="Mhamd Ghanoum home">
+                <strong>Mhamd Ghanoum</strong>
+                <span>Backend Engineer · Germany-ready</span>
             </a>
-            <!-- Optional: Live Demo button -->
-            <!-- <a href="https://your-demo-url.com" target="_blank" class="action-btn demo-btn">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-            </a> -->
-        </div>
-    </div>
-</div>
-
-          <div class="project-card">
-    <div class="project-image">
-        <img src="img/flutter-3.svg" alt="Medical Centers Social Platform App">
-    </div>
-    <div class="project-content">
-        <h3>Medical Centers App</h3>
-        <p class="tech-stack">Flutter, Leaflet Map API, REST API</p>
-        <p class="project-desc">
-           Cross-platform app with authentication, interactive maps, profile views, favorites, posts, and appointment booking/tracking.
-        </p>
-        <div class="project-actions">
-            <a href="https://github.com/Mhamd021/charts_application" target="_blank" class="action-btn">
-                <i class="fab fa-github"></i> Code
-            </a>
-            <button onclick="openmodal('MedicalCenters-App')" class="action-btn">
-                <i class="fas fa-images"></i> Details
+            <div class="nav-links">
+                <a class="nav-link active" href="#home">Home</a>
+                <a class="nav-link" href="#projects">Projects</a>
+                <a class="nav-link" href="#skills">Skills</a>
+                <a class="nav-link" href="#contact">Contact</a>
+            </div>
+            <button class="theme-btn" type="button" aria-label="Toggle dark and light theme" title="Toggle theme">
+                <i class="fas fa-adjust"></i>
             </button>
-        </div>
-    </div>
-</div>
+        </nav>
+    </header>
 
-        <div class="project-card">
-            <div class="project-image">
-                <img src="img/Laravel.svg.png" alt="E-commerce Website">
-            </div>
-            <div class="project-content">
-                <h3>E-commerce Website</h3>
-                <p class="tech-stack">Laravel, HTML, CSS, JavaScript</p>
-                <p class="project-desc">
-                    Multi-store platform with roles, order management, and map integration.
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-inner">
+                <p class="availability">Open to work — relocating to Germany</p>
+                <h1>Backend Engineer</h1>
+                <p class="hero-stack">NestJS · TypeScript · PostgreSQL · Redis · Docker</p>
+                <p class="hero-copy">
+                    4+ years building production backends for e-commerce, real-time delivery, and mobile platforms.
+                    Specialized in event-driven architecture, WebSocket orchestration, and containerized deployments.
+                    Seeking Backend Engineer roles in Germany.
                 </p>
-                <div class="project-actions">
-                    <a href="https://github.com/Mhamd021/E-commerce" target="_blank" class="action-btn">
-                        <i class="fab fa-github"></i> Code
+                <div class="hero-actions">
+                    <a class="btn primary" href="#projects">View Projects</a>
+                    <a class="btn" href="https://github.com/Mhamd021" target="_blank" rel="noreferrer">
+                        GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                     </a>
-                    <button onclick="openmodal('E-commerce-web')" class="action-btn">
-                        <i class="fas fa-images"></i> Details
-                    </button>
+                     <a class="btn" href="https://www.linkedin.com/in/mhamd-ghanoum-234325227/" target="_blank" rel="noreferrer">
+                        LinkedIn <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-        <!-- Project Card 2 -->
-        <div class="project-card">
-            <div class="project-image">
-                <img src="img/flutter-3.svg" alt="E-commerce App" style="object-fit: contain;">
-            </div>
-            <div class="project-content">
-                <h3>E-commerce App</h3>
-                <p class="tech-stack">Flutter</p>
-                <p class="project-desc">
-                    Mobile shopping app with cart, location, and GetX state management.
-                </p>
-                <div class="project-actions">
-                    <a href="https://github.com/Mhamd021/E-commerce-User-app" target="_blank" class="action-btn">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    <button onclick="openmodal('E-commerce-Application')" class="action-btn">
-                        <i class="fas fa-images"></i> Details
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Project Card 3 -->
-        <div class="project-card">
-            <div class="project-image">
-                <img src="img/Laravel.svg.png" alt="Journey Website">
-            </div>
-            <div class="project-content">
-                <h3>Journey Website</h3>
-                <p class="tech-stack">Laravel, HTML, CSS, JavaScript</p>
-                <p class="project-desc">
-                    Social platform for sharing journeys, with Mapbox and real-time notifications.
-                </p>
-                <div class="project-actions">
-                    <a href="https://github.com/Mhamd021/journey-dashboard" target="_blank" class="action-btn">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    <button onclick="openmodal('Journey-Website')" class="action-btn">
-                        <i class="fas fa-images"></i> Details
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Project Card 4 -->
-        <div class="project-card">
-            <div class="project-image">
-                <img src="img/flutter-3.svg" alt="Journey App" style="object-fit: contain;">
-            </div>
-            <div class="project-content">
-                <h3>Journey App</h3>
-                <p class="tech-stack">Flutter</p>
-                <p class="project-desc">
-                    Mobile app for exploring and interacting with journeys, maps, and notifications.
-                </p>
-                <div class="project-actions">
-                    <a href="https://github.com/Mhamd021/journey" target="_blank" class="action-btn">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    <button onclick="openmodal('Journey-Application')" class="action-btn">
-                        <i class="fas fa-images"></i> Details
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
         </section>
-        <!-- Add this before your contact section in index.html -->
-<section class="container" id="blender-3d">
-    <div class="main-title">
-        <h2>3D <span>Blender</span> Work<span class="bg-text">3D Scenes</span></h2>
-    </div>
-    <p class="port-text">
-        Interactive 3D scenes and animations crafted in Blender, exported for the web and video.
-    </p>
-    <div class="blender-grid">
-        <!-- Example 3D Model Card -->
-        <div class="blender-card">
-            <div class="blender-media">
-               <div class="model-viewer-bg">
-  <model-viewer 
-    src="models/portfolioshirt.glb" 
-    alt="3D T-shirt" 
-    auto-rotate 
-    camera-controls 
-    style="width:100%;height:300px;border-radius:16px;background:transparent;">
-  </model-viewer>
-</div>
-            </div>
-            <div class="blender-content">
-                <h3>3D T-shirt Configurator</h3>
-                <p>Exported from Blender and integrated with Three.js for real-time customization.</p>
-            </div>
-        </div>
-        
-        
-    </div>
-      <div class="blender-grid">
-        <!-- Example 3D Model Card -->
-        <div class="blender-card">
-            <div class="blender-media">
-               <div class="model-viewer-bg">
-  <model-viewer 
-    src="models/first.glb" 
-    alt="3D T-shirt" 
-    auto-rotate 
-    camera-controls 
-    style="width:100%;height:300px;border-radius:16px;background:transparent;">
-  </model-viewer>
-</div>
-            </div>
-            <div class="blender-content">
-                <h3>Donat Scene</h3>
-            </div>
-        </div>
-        
-        
-    </div>
-</section>
-        <section class="container contact" id="contact">
-            <div class="contact-container">
-                <div class="main-title">
-                    <h2>Contact <span>Me</span><span class="bg-text">Contact</span></h2>
-                </div>
-                <div class="contact-content-con">
-                    <div class="left-contact">
-                        <h4>Contact me here</h4>
 
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Location</span>
-                                </div>
-                                <p>
-                                    : Mesyaf, Syria
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>Email</span>
-                                </div>
-                                <p>
-                                    <span>: mhamdghanoum82@gmail.com</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Education</span>
-                                </div>
-                                <p>
-                                    <span>: Al-Hawash University, Homs Syria</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-user-graduate"></i>
-                                    <span>Mobile Number</span>
-                                </div>
-                                <p>
-                                    <span>: +963962390102</span>
-                                </p>
-                            </div>
-                            <div class="contact-item">
-                                <div class="icon">
-                                    <i class="fas fa-globe-africa"></i>
-                                    <span>Languages</span>
-                                </div>
-                                <p>
-                                    <span>: Arabic, English, German</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-icons">
-                            <div class="contact-icon">
-                                <a href="https://www.facebook.com/mhamd.ghanoum.5/" target="_blank">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/mhamd-ghanoum-234325227/" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://github.com/Mhamd021" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
+        <section id="projects">
+            <p class="section-kicker">Selected Work</p>
+            <h2 class="section-title">Production-minded backend projects.</h2>
+            <p class="section-intro">
+                A focused portfolio for backend roles: architecture, data consistency, real-time systems, and deployment.
+            </p>
 
-                            </div>
+            <div class="projects-grid">
+                <article class="project-card featured">
+                    <div class="project-top">
+                        <div>
+                            <span class="badge">Featured Project</span>
+                            <h3 class="project-title">E-Commerce Delivery Backend</h3>
                         </div>
                     </div>
+                    <div class="project-body">
+                        <ul class="tag-list" aria-label="E-Commerce Delivery Backend stack">
+                            <li class="tag">NestJS</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Prisma</li>
+                            <li class="tag">Redis</li>
+                            <li class="tag">Socket.IO</li>
+                            <li class="tag">Docker</li>
+                        </ul>
+                        <p class="project-desc">
+                            Production-ready backend for a 4-role delivery platform (Customer, Vendor, Deliverer, Admin).
+                            Built from scratch: batch order engine, immutable event log with CQRS projections, three
+                            Socket.IO namespaces with JWT auth and reconnect-replay, Redis Cache-Aside + Write-Behind
+                            for real-time location, and full Docker Compose deployment.
+                        </p>
+                        <ul class="highlight-list" aria-label="E-Commerce Delivery Backend highlights">
+                            <li>Event-driven architecture</li>
+                            <li>Redis GEO + Write-Behind</li>
+                            <li>3 Socket.IO namespaces</li>
+                            <li>Immutable event log</li>
+                            <li>Docker Compose</li>
+                        </ul>
+                        <div class="project-links">
+                            <a class="link-btn primary" href="https://github.com/Mhamd021/Mesyaf-Market" target="_blank" rel="noreferrer">
+                                GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                            <button class="detail-btn" type="button" onclick="openmodal('delivery-backend')">
+                                Details <i class="fas fa-images" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
 
+                <article class="project-card">
+                    <div>
+                        <h3 class="project-title">3D T-Shirt Design Tool</h3>
+                        <ul class="tag-list" aria-label="3D T-Shirt Design Tool stack">
+                            <li class="tag">Blender</li>
+                            <li class="tag">Three.js</li>
+                            <li class="tag">Next.js</li>
+                            <li class="tag">NestJS</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Docker</li>
+                        </ul>
+                    </div>
+                    <p class="project-desc">
+                        Interactive web-based product configurator with real-time 3D rendering. UV-mapped model built in
+                        Blender, rendered via Three.js. NestJS backend handles design persistence and asset management.
+                    </p>
+                    <div class="project-links">
+                        <a class="link-btn" href="https://github.com/Mhamd021/3d-tshirt-tool" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <a class="link-btn" href="https://euphonious-pegasus-b6b9bb.netlify.app" target="_blank" rel="noreferrer">
+                            Live Demo <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <button class="detail-btn" type="button" onclick="openmodal('tshirt-tool')">
+                            Details <i class="fas fa-images" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3 class="project-title">Multi-Store E-Commerce Platform</h3>
+                        <ul class="tag-list" aria-label="Multi-Store E-Commerce Platform stack">
+                            <li class="tag">Laravel</li>
+                            <li class="tag">MySQL</li>
+                            <li class="tag">Leaflet</li>
+                            <li class="tag">Pusher</li>
+                        </ul>
+                    </div>
+                    <p class="project-desc">
+                        Full-stack multi-store platform with role-based access (Admin, Store Manager, Delivery, Customer),
+                        order lifecycle management, map-based delivery tracking, and real-time notifications via Pusher.
+                    </p>
+                    <div class="project-links">
+                        <a class="link-btn" href="https://github.com/Mhamd021/E-commerce" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <button class="detail-btn" type="button" onclick="openmodal('multi-store-commerce')">
+                            Details <i class="fas fa-images" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3 class="project-title">Journey Social Platform</h3>
+                        <ul class="tag-list" aria-label="Journey Social Platform stack">
+                            <li class="tag">Laravel</li>
+                            <li class="tag">Flutter</li>
+                            <li class="tag">Mapbox</li>
+                            <li class="tag">Pusher</li>
+                        </ul>
+                    </div>
+                    <p class="project-desc">
+                        Social platform for sharing travel journeys. Laravel backend with REST API, Flutter mobile client,
+                        Mapbox route visualization, real-time chat and notifications via Pusher.
+                    </p>
+                    <div class="project-links">
+                        <a class="link-btn" href="https://github.com/Mhamd021/journey-dashboard" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <button class="detail-btn" type="button" onclick="openmodal('journey-platform')">
+                            Details <i class="fas fa-images" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills">
+            <p class="section-kicker">Technical Focus</p>
+            <h2 class="section-title">Backend-first skill set.</h2>
+            <p class="section-intro">
+                Clean categories, no inflated meters. The emphasis is production backend engineering, with secondary
+                frontend and 3D experience where it supports product delivery.
+            </p>
+
+            <div class="skills-grid">
+                <article class="skill-group">
+                    <h3>Backend</h3>
+                    <div class="skill-tags">
+                        <span>NestJS (TypeScript)</span>
+                        <span>Node.js</span>
+                        <span>Laravel (PHP)</span>
+                        <span>REST API</span>
+                        <span>WebSockets (Socket.IO)</span>
+                        <span>JWT</span>
+                        <span>Event-Driven</span>
+                    </div>
+                </article>
+
+                <article class="skill-group">
+                    <h3>Databases &amp; Caching</h3>
+                    <div class="skill-tags">
+                        <span>PostgreSQL</span>
+                        <span>Prisma ORM</span>
+                        <span>MySQL</span>
+                        <span>Redis</span>
+                        <span>Cache-Aside</span>
+                        <span>Write-Behind</span>
+                        <span>TTL</span>
+                    </div>
+                </article>
+
+                <article class="skill-group">
+                    <h3>DevOps</h3>
+                    <div class="skill-tags">
+                        <span>Docker</span>
+                        <span>Docker Compose</span>
+                        <span>Nginx</span>
+                        <span>GitHub Actions</span>
+                        <span>Git</span>
+                    </div>
+                </article>
+
+                <article class="skill-group">
+                    <h3>Frontend &amp; Mobile</h3>
+                    <div class="skill-tags">
+                        <span>Next.js</span>
+                        <span>Three.js</span>
+                        <span>Flutter</span>
+                        <span>Blender (3D/UV)</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-panel">
+                <div>
+                    <p class="section-kicker">Contact</p>
+                    <h2 class="section-title">Available for Germany.</h2>
+                    <p class="contact-note">
+                        Available for Backend Engineer roles — English (C1) · German (B1, B2 in progress)
+                    </p>
+                </div>
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:mhamdghanoum82@gmail.com">mhamdghanoum82@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/Mhamd021" target="_blank" rel="noreferrer">github.com/Mhamd021</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/mhamd-ghanoum-234325227/" target="_blank" rel="noreferrer">linkedin.com/in/mhamd-ghanoum-234325227</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Syria — Open to relocation in Germany</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <div class="controls">
-        <div class="control active-btn" data-id="home">
-            <i class="fas fa-home"></i>
+    <div id="delivery-backend" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h2>E-Commerce Delivery Backend</h2>
+                    <ul class="tag-list">
+                        <li class="tag">NestJS</li>
+                        <li class="tag">PostgreSQL</li>
+                        <li class="tag">Prisma</li>
+                        <li class="tag">Redis</li>
+                        <li class="tag">Socket.IO</li>
+                        <li class="tag">Docker</li>
+                    </ul>
+                </div>
+                <button type="button" class="close-btn" onclick="closeModal('delivery-backend')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="architecture-showcase">
+                    <div class="architecture-image">
+                        <img src="img/backend-arc.PNG" alt="E-Commerce Delivery Backend architecture diagram">
+                    </div>
+                    <div class="architecture-map" aria-label="E-Commerce Delivery Backend architecture decision tree">
+                        <div class="architecture-node accented">
+                            <strong>Delivery Platform Core</strong>
+                            <span>Customer, Vendor, Deliverer, and Admin flows share one event-driven backend.</span>
+                        </div>
+                        <div class="architecture-branch">
+                            <div class="architecture-node">
+                                <strong>Order Decisions</strong>
+                                <span>Batch order engine validates carts, vendor grouping, status transitions, and delivery assignment.</span>
+                            </div>
+                            <div class="architecture-node">
+                                <strong>Realtime Decisions</strong>
+                                <span>Socket.IO namespaces isolate customer, vendor, and deliverer events with JWT authorization.</span>
+                            </div>
+                        </div>
+                        <div class="architecture-branch">
+                            <div class="architecture-node">
+                                <strong>Event Log</strong>
+                                <span>Immutable facts are written first, then projected into read models for reliable recovery.</span>
+                            </div>
+                            <div class="architecture-node">
+                                <strong>Redis Location Layer</strong>
+                                <span>GEO lookups, TTL data, Cache-Aside reads, and Write-Behind persistence support live delivery tracking.</span>
+                            </div>
+                        </div>
+                        <div class="architecture-node">
+                            <strong>Deployment Boundary</strong>
+                            <span>Docker Compose runs the API, PostgreSQL, Redis, and supporting services in a reproducible environment.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-copy">
+                    <p>
+                        Backend-focused delivery system for customer ordering, vendor fulfillment, deliverer location
+                        updates, and admin operations. The architecture prioritizes reliable state transitions and
+                        replayable real-time events.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i><span>Batch order engine for multi-vendor delivery flows.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Immutable event log with CQRS projections.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Three Socket.IO namespaces with JWT auth and reconnect-replay.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Redis Cache-Aside and Write-Behind patterns for location data.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Docker Compose deployment for local and production-like environments.</span></li>
+                    </ul>
+                    <div class="modal-actions">
+                        <a class="link-btn primary" href="https://github.com/Mhamd021/Mesyaf-Market" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="control" data-id="about">
-            <i class="fas fa-user"></i>
-        </div>
-        <div class="control" data-id="portfolio">
-            <i class="fas fa-briefcase"></i>
-        </div>
-         <div class="control" data-id="blender-3d">
-                <i class="fas fa-cube"></i>
+    </div>
 
-        </div>
-        <div class="control" data-id="contact">
-            <i class="fas fa-envelope-open"></i>
+    <div id="tshirt-tool" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h2>3D T-Shirt Design Tool</h2>
+                    <ul class="tag-list">
+                        <li class="tag">Blender</li>
+                        <li class="tag">Three.js</li>
+                        <li class="tag">Next.js</li>
+                        <li class="tag">NestJS</li>
+                        <li class="tag">PostgreSQL</li>
+                        <li class="tag">Docker</li>
+                    </ul>
+                </div>
+                <button type="button" class="close-btn" onclick="closeModal('tshirt-tool')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="architecture-map" aria-label="3D T-Shirt Design Tool system overview">
+                    <div class="architecture-node accented">
+                        <strong>Live Product Configurator</strong>
+                        <span>The project is best reviewed through the deployed frontend demo and backend API.</span>
+                    </div>
+                    <div class="architecture-branch">
+                        <div class="architecture-node">
+                            <strong>Frontend Demo</strong>
+                            <span>Next.js and Three.js power the interactive customization workflow.</span>
+                        </div>
+                        <div class="architecture-node">
+                            <strong>Backend API</strong>
+                            <span>NestJS handles design persistence, assets, and server-side product data.</span>
+                        </div>
+                    </div>
+                    <div class="architecture-node">
+                        <strong>Persistence</strong>
+                        <span>PostgreSQL stores saved designs while Docker keeps deployment reproducible.</span>
+                    </div>
+                </div>
+                <div class="modal-copy">
+                    <p>
+                        Product configurator with a UV-mapped Blender model, a Three.js rendering surface, and a NestJS
+                        API for saving designs and managing generated assets.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i><span>Real-time color, image, and text customization.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Backend persistence for saved designs and assets.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Dockerized backend deployment.</span></li>
+                    </ul>
+                    <div class="modal-actions">
+                        <a class="link-btn" href="https://github.com/Mhamd021/3d-tshirt-tool" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <a class="link-btn primary" href="https://euphonious-pegasus-b6b9bb.netlify.app" target="_blank" rel="noreferrer">
+                            Frontend Demo <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <a class="link-btn" href="https://t-shirt-backend-server-production.up.railway.app" target="_blank" rel="noreferrer">
+                            Backend API <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
+
+    <div id="multi-store-commerce" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h2>Multi-Store E-Commerce Platform</h2>
+                    <ul class="tag-list">
+                        <li class="tag">Laravel</li>
+                        <li class="tag">MySQL</li>
+                        <li class="tag">Leaflet</li>
+                        <li class="tag">Pusher</li>
+                    </ul>
+                </div>
+                <button type="button" class="close-btn" onclick="closeModal('multi-store-commerce')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="image-slider">
+                    <div class="slides">
+                        <div class="slide"><img src="img/category.JPG" alt="Multi-store e-commerce category screen"></div>
+                        <div class="slide"><img src="img/e-web-order.JPG" alt="Multi-store e-commerce order screen"></div>
+                        <div class="slide"><img src="img/store.JPG" alt="Multi-store e-commerce store manager screen"></div>
+                        <div class="slide"><img src="img/home page-portrait.png" alt="Multi-store e-commerce mobile home screen"></div>
+                        <div class="slide"><img src="img/E-login-portrait.png" alt="Multi-store e-commerce mobile login screen"></div>
+                        <div class="slide"><img src="img/Register-portrait.png" alt="Multi-store e-commerce mobile register screen"></div>
+                        <div class="slide"><img src="img/cart-portrait.png" alt="Multi-store e-commerce mobile cart screen"></div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1, 0)" aria-label="Previous slide">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 0)" aria-label="Next slide">&#10095;</a>
+                </div>
+                <div class="modal-copy">
+                    <p>
+                        Laravel platform with a connected Flutter mobile customer app for multiple stores, delivery
+                        operations, and customer ordering. It combines role-based dashboards with order tracking,
+                        cart workflows, and real-time operational updates.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i><span>Admin, Store Manager, Delivery, and Customer roles.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Order lifecycle management from cart to delivery.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Flutter customer app for browsing stores, authentication, cart, and checkout flows.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Leaflet maps for delivery location workflows.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Pusher notifications for real-time updates.</span></li>
+                    </ul>
+                    <div class="modal-actions">
+                        <a class="link-btn primary" href="https://github.com/Mhamd021/E-commerce" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="app.js"></script>
+
+    <div id="journey-platform" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h2>Journey Social Platform</h2>
+                    <ul class="tag-list">
+                        <li class="tag">Laravel</li>
+                        <li class="tag">Flutter</li>
+                        <li class="tag">Mapbox</li>
+                        <li class="tag">Pusher</li>
+                    </ul>
+                </div>
+                <button type="button" class="close-btn" onclick="closeModal('journey-platform')" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="image-slider">
+                    <div class="slides">
+                        <div class="slide"><img src="img/login.JPG" alt="Journey social platform login"></div>
+                        <div class="slide"><img src="img/show.JPG" alt="Journey social platform journey details"></div>
+                        <div class="slide"><img src="img/create-journey.JPG" alt="Journey social platform create journey"></div>
+                        <div class="slide"><img src="img/journeys.png" alt="Journey mobile app journeys list"></div>
+                        <div class="slide"><img src="img/posts.png" alt="Journey mobile app posts"></div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1, 1)" aria-label="Previous slide">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1, 1)" aria-label="Next slide">&#10095;</a>
+                </div>
+                <div class="modal-copy">
+                    <p>
+                        Travel journey sharing platform with a Laravel REST API, Flutter mobile client, map visualization,
+                        chat, and real-time notifications.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i><span>REST API for journeys, posts, comments, and profiles.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Mapbox route visualization for journey paths.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Real-time chat and notifications with Pusher.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Flutter mobile client for social interactions.</span></li>
+                    </ul>
+                    <div class="modal-actions">
+                        <a class="link-btn primary" href="https://github.com/Mhamd021/journey-dashboard" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Large project image">
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("main section[id]");
+        const themeBtn = document.querySelector(".theme-btn");
+
+        themeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+        });
+
+        function setActiveNav(id) {
+            navLinks.forEach((link) => {
+                link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+            });
+        }
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveNav(entry.target.id);
+                }
+            });
+        }, {
+            rootMargin: "-35% 0px -55% 0px",
+            threshold: 0
+        });
+
+        sections.forEach((section) => navObserver.observe(section));
+
+        function openmodal(modalid) {
+            const modal = document.getElementById(modalid);
+            if (!modal) return;
+            modal.style.display = "flex";
+            document.body.classList.add("modal-open");
+            const sliderIndex = Array.from(document.querySelectorAll(".image-slider")).findIndex((slider) => modal.contains(slider));
+            if (sliderIndex >= 0) {
+                slideIndexes[sliderIndex] = slideIndexes[sliderIndex] || 1;
+                showSlides(slideIndexes[sliderIndex], sliderIndex);
+            }
+        }
+
+        function closeModal(modalid) {
+            const modal = document.getElementById(modalid);
+            if (!modal) return;
+            modal.style.display = "none";
+            document.body.classList.remove("modal-open");
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox-modal").style.display = "none";
+            document.getElementById("lightbox-img").src = "";
+        }
+
+        let slideIndexes = {};
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let sliders = document.querySelectorAll(".image-slider");
+            sliders.forEach((slider, index) => {
+                slideIndexes[index] = 1;
+                showSlides(1, index);
+            });
+        });
+
+        function plusSlides(n, sliderIndex) {
+            showSlides(slideIndexes[sliderIndex] += n, sliderIndex);
+        }
+
+        function currentSlide(n, sliderIndex) {
+            showSlides(slideIndexes[sliderIndex] = n, sliderIndex);
+        }
+
+        function showSlides(n, sliderIndex) {
+            let i;
+            let slider = document.querySelectorAll(".image-slider")[sliderIndex];
+            if (!slider) return;
+            let slides = slider.getElementsByClassName("slide");
+            if (!slides.length) return;
+
+            if (n > slides.length) { slideIndexes[sliderIndex] = 1; }
+            if (n < 1) { slideIndexes[sliderIndex] = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                const media = slides[i].querySelector("video");
+                if (media) media.pause();
+            }
+            slides[slideIndexes[sliderIndex] - 1].style.display = "block";
+        }
+
+        document.querySelectorAll(".image-slider .slide img").forEach(function (img) {
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", function (e) {
+                e.stopPropagation();
+                document.getElementById("lightbox-img").src = img.src;
+                document.getElementById("lightbox-modal").style.display = "flex";
+            });
+        });
+
+        document.querySelectorAll(".modal").forEach((modal) => {
+            modal.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                document.querySelectorAll(".modal").forEach((modal) => {
+                    if (modal.style.display === "flex") closeModal(modal.id);
+                });
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 
 </html>
-
-
-
-
-
-
-<div id="E-commerce-web" class="modal modern-modal">
-    <div class="modal-content modern-modal-content">
-        <div class="modal-header">
-            <h2>
-                <i class="fas fa-shopping-cart"></i> E-Commerce Website
-            </h2>
-            <div class="tech-badges">
-                <span class="badge">Laravel</span>
-                <span class="badge">HTML</span>
-                <span class="badge">CSS</span>
-                <span class="badge">JavaScript</span>
-            </div>
-            <button type="button" class="close-btn" onclick="closeModal('E-commerce-web')" aria-label="close the modal" title="close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <div class="image-slider" id="slider1">
-                    <div class="slides">
-                        <div class="slide"><img src="img/category.JPG" title="Categories"></div>
-                        <div class="slide"><img src="img/e-web-order.JPG" title="Order Details"></div>
-                        <div class="slide"><img src="img/store.JPG" title="Store Manager Page"></div>
-                        <div class="slide"><img src="img/e-web-editUser.JPG" title="Edit User Permissions"></div>
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
-                </div>
-            </div>
-            <div class="modal-right">
-                <p class="project-overview">
-                    <b>Overview:</b> A multi-store e-commerce platform with advanced user roles, order management, and map integration.
-                </p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Super-Admin dashboard & permissions</li>
-                    <li><i class="fas fa-check-circle"></i> Store & Delivery management</li>
-                    <li><i class="fas fa-check-circle"></i> Customer cart, ratings, and map-based delivery</li>
-                    <li><i class="fas fa-check-circle"></i> Leaflet map integration</li>
-                    <li><i class="fas fa-check-circle"></i> Secure authentication (Sanctum)</li>
-                </ul>
-                <div class="modal-actions">
-                    <a href="https://github.com/Mhamd021/E-commerce" target="_blank" class="action-btn">
-                        <i class="fab fa-github" style="color: wheat;">View Code</i> 
-                    </a>
-                    <!-- Optional: Live Demo button -->
-                    <!-- <a href="https://your-demo-url.com" target="_blank" class="action-btn demo-btn">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div id="E-commerce-Application" class="modal modern-modal">
-    <div class="modal-content modern-modal-content">
-        <div class="modal-header">
-            <h2>
-                <i class="fas fa-mobile-alt"></i> E-Commerce Application
-            </h2>
-            <div class="tech-badges">
-                <span class="badge">Flutter</span>
-            </div>
-            <button type="button" class="close-btn" onclick="closeModal('E-commerce-Application')" aria-label="close the modal" title="close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <div class="image-slider" id="slider2">
-                    <div class="slides">
-                        <div class="slide"><img src="img/home page-portrait.png" title="Home Page"></div>
-                        <div class="slide"><img src="img/E-login-portrait.png" title="Login"></div>
-                        <div class="slide"><img src="img/Register-portrait.png" title="Register"></div>
-                        <div class="slide"><img src="img/cart-portrait.png" title="Cart"></div>
-                        <div class="slide"><img src="img/submit-portrait.png" title="Submit Order"></div>
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
-                </div>
-            </div>
-            <div class="modal-right">
-                <p class="project-overview">
-                    <b>Overview:</b> Mobile shopping app built with Flutter, seamlessly integrated with the E-commerce website.
-                </p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Browse and order products</li>
-                    <li><i class="fas fa-check-circle"></i> Interactive map for delivery location</li>
-                    <li><i class="fas fa-check-circle"></i> Cart management and product ratings</li>
-                    <li><i class="fas fa-check-circle"></i> GetX for state management</li>
-                    <li><i class="fas fa-check-circle"></i> SharedPreferences for local storage</li>
-                    <li><i class="fas fa-check-circle"></i> MVC design pattern</li>
-                </ul>
-                <div class="modal-actions">
-                    <a href="https://github.com/Mhamd021/E-commerce-User-app" target="_blank" class="action-btn">
-                        
-                        <i class="fab fa-github" style="color: wheat;">View Code</i> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="Journey-Website" class="modal modern-modal">
-    <div class="modal-content modern-modal-content">
-        <div class="modal-header">
-            <h2>
-                <i class="fas fa-route"></i> Journey Platform (Website)
-            </h2>
-            <div class="tech-badges">
-                <span class="badge">Laravel</span>
-                <span class="badge">HTML</span>
-                <span class="badge">CSS</span>
-                <span class="badge">JavaScript</span>
-            </div>
-            <button type="button" class="close-btn" onclick="closeModal('Journey-Website')" aria-label="close the modal" title="close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <div class="image-slider" id="slider3">
-                    <div class="slides">
-                        <div class="slide"><img src="img/login.JPG" title="login"></div>
-                        <div class="slide"><img src="img/show.JPG" title="show journey"></div>
-                        <div class="slide"><img src="img/create-journey.JPG" title="create-journey"></div>
-                        <div class="slide"><img src="img/Edit-journey.JPG" title="Edit-journey"></div>
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
-                </div>
-            </div>
-            <div class="modal-right">
-                <p class="project-overview">
-                    <b>Overview:</b> Social media platform for sharing and exploring journeys, with admin/user features and interactive maps.
-                </p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Admin: Create/edit journeys, manage map points</li>
-                    <li><i class="fas fa-check-circle"></i> Real-time notifications (Pusher)</li>
-                    <li><i class="fas fa-check-circle"></i> User: Profile customization, posts, comments, friend requests</li>
-                    <li><i class="fas fa-check-circle"></i> Mapbox integration for journey maps</li>
-                    <li><i class="fas fa-check-circle"></i> Responsive design & secure image storage</li>
-                </ul>
-                <div class="modal-actions">
-                    <a href="https://github.com/Mhamd021/journey-dashboard" target="_blank" class="action-btn">
-                        <i class="fab fa-github" style="color: wheat;">View Code</i> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="Journey-Application" class="modal modern-modal">
-    <div class="modal-content modern-modal-content">
-        <div class="modal-header">
-            <h2>
-                <i class="fas fa-mobile-alt"></i> Journey Platform (App)
-            </h2>
-            <div class="tech-badges">
-                <span class="badge">Flutter</span>
-            </div>
-            <button type="button" class="close-btn" onclick="closeModal('Journey-Application')" aria-label="close the modal" title="close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <div class="image-slider" id="slider4">
-                    <div class="slides">
-                        <div class="slide"><img src="img/journeys.png" title="journeys"></div>
-                        <div class="slide"><img src="img/posts.png" title="posts"></div>
-                         <div class="slide"><img src="img/details.png" title="details"></div>
-                        <!-- Add more slides as needed -->
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
-                </div>
-            </div>
-            <div class="modal-right">
-                <p class="project-overview">
-                    <b>Overview:</b> Mobile app for journey sharing, interactive maps, notifications, and secure user features.
-                </p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Profile customization</li>
-                    <li><i class="fas fa-check-circle"></i> Post updates, comments, friend requests</li>
-                    <li><i class="fas fa-check-circle"></i> Interactive Mapbox journeys</li>
-                    <li><i class="fas fa-check-circle"></i> Real-time notifications & chat</li>
-                    <li><i class="fas fa-check-circle"></i> Secure token storage & GetX state management</li>
-                </ul>
-                <div class="modal-actions">
-                    <a href="#" target="_blank" class="action-btn">
-                        <i class="fab fa-github" style="color: wheat;">View Code</i> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="MedicalCenters-App" class="modal modern-modal">
-    <div class="modal-content modern-modal-content">
-        <div class="modal-header">
-            <h2>
-                <i class="fas fa-mobile-alt"></i> Medical Centers App
-            </h2>
-            <div class="tech-badges">
-                <span class="badge">Flutter</span>
-                <span class="badge">Leaflet Map API</span>
-                <span class="badge">REST API</span>
-            </div>
-            <button type="button" class="close-btn" onclick="closeModal('MedicalCenters-App')" aria-label="close the modal" title="close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="modal-left">
-                <div class="image-slider" id="slider5">
-                    <div class="slides">
-                        <div class="slide"><img src="img/log.png" title="Login"></div>
-                        <div class="slide"><img src="img/reg.png" title="Register"></div>
-                        <div class="slide"><img src="img/home.png" title="Home"></div>
-                        <div class="slide"><img src="img/pass-reset.png" title="Password Reset"></div>
-                        <div class="slide"><img src="img/centerProfile.png" title="Center Profile"></div>
-                        <div class="slide"><img src="img/reviews.png" title="Reviews"></div>
-                        <div class="slide"><img src="img/booking.png" title="Booking"></div>
-                    </div>
-                    <a class="prev" onclick="plusSlides(-1, 4)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 4)">&#10095;</a>
-                </div>
-            </div>
-            <div class="modal-right">
-                <p class="project-overview">
-                    <b>Overview:</b> A cross-platform mobile app for medical centers, built with Flutter and integrated with REST APIs. Features authentication, interactive maps, profiles, favorites, posts, and appointment booking/tracking.
-                </p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> Email & Google authentication</li>
-                    <li><i class="fas fa-check-circle"></i> Interactive map with medical center markers</li>
-                    <li><i class="fas fa-check-circle"></i> Location-based filtering (day, hours, specialty, distance)</li>
-                    <li><i class="fas fa-check-circle"></i> Detailed center profiles: images, doctors, reviews</li>
-                    <li><i class="fas fa-check-circle"></i> Favorites & dedicated feed for followed centers</li>
-                    <li><i class="fas fa-check-circle"></i> Book appointments and track status</li>
-                </ul>
-                <div class="modal-actions">
-                    <a href="https://github.com/Mhamd021/charts_application" target="_blank" class="action-btn">
-                        <i class="fab fa-github" style="color: wheat;">View Code</i> 
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div id="lightbox-modal" class="lightbox-modal" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Large view">
-</div>
-
-<script>
-    function openmodal(modalid) {
-        document.getElementById(modalid).style.display = 'flex';
-    }
-    function closeModal(modalid) {
-        document.getElementById(modalid).style.display = "none";
-    }
-    function closeLightbox() {
-        document.getElementById('lightbox-modal').style.display = "none";
-    }
-
-let slideIndexes = {};
-
-// Initialize sliders
-document.addEventListener("DOMContentLoaded", function() {
-    let sliders = document.querySelectorAll(".image-slider");
-    sliders.forEach((slider, index) => {
-        slideIndexes[index] = 1;
-        showSlides(1, index);
-    });
-});
-
-function plusSlides(n, sliderIndex) {
-    showSlides(slideIndexes[sliderIndex] += n, sliderIndex);
-}
-
-function currentSlide(n, sliderIndex) {
-    showSlides(slideIndexes[sliderIndex] = n, sliderIndex);
-}
-
-function showSlides(n, sliderIndex) {
-    let i;
-    let slider = document.querySelectorAll(".image-slider")[sliderIndex];
-    let slides = slider.getElementsByClassName("slide");
-
-    if (n > slides.length) { slideIndexes[sliderIndex] = 1 }
-    if (n < 1) { slideIndexes[sliderIndex] = slides.length }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    slides[slideIndexes[sliderIndex] - 1].style.display = "block";
-}
-document.querySelectorAll('.image-slider .slide img').forEach(function(img) {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function(e) {
-        e.stopPropagation();
-        document.getElementById('lightbox-img').src = img.src;
-        document.getElementById('lightbox-modal').style.display = 'flex';
-    });
-});
-
-function closeLightbox() {
-    document.getElementById('lightbox-modal').style.display = 'none';
-    document.getElementById('lightbox-img').src = '';
-}
-</script>
-
-
-
-
