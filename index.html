@@ -818,6 +818,95 @@
         }
     </style>
 </head>
+<div id="job-tracker" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h2>Job Application Tracker</h2>
+        <ul class="tag-list">
+          <li class="tag">NestJS</li>
+          <li class="tag">GraphQL</li>
+          <li class="tag">PostgreSQL</li>
+          <li class="tag">Prisma v7</li>
+          <li class="tag">Next.js</li>
+          <li class="tag">Docker</li>
+        </ul>
+      </div>
+      <button type="button" class="close-btn" 
+              onclick="closeModal('job-tracker')">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="architecture-map">
+        <div class="architecture-node accented">
+          <strong>Full-Stack Tracker</strong>
+          <span>Built to manage my own Germany job search — 
+                real tool, real use case.</span>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>GraphQL API</strong>
+            <span>Code-first with @nestjs/graphql. Queries, 
+                  mutations, and stats in one endpoint.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>JWT Auth</strong>
+            <span>Stateless authentication — register, login, 
+                  protected resolvers.</span>
+          </div>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>PostgreSQL + Prisma v7</strong>
+            <span>Two tables: User and Application. 
+                  Prisma pg adapter for direct pool connection.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Next.js Frontend</strong>
+            <span>Single-page dashboard with stats, 
+                  filters, and CRUD operations.</span>
+          </div>
+        </div>
+        <div class="architecture-node">
+          <strong>Why GraphQL?</strong>
+          <span>One query returns applications + stats + filters — 
+                no multiple REST endpoints needed.</span>
+        </div>
+      </div>
+      <div class="modal-copy">
+        <p>
+          Personal tool built during my Germany job search. 
+          Tracks applications by status, shows stats per category, 
+          and lets me add notes after each interview.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i>
+            <span>GraphQL API — queries, mutations, stats.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>JWT authentication with protected resolvers.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Status tracking: To Apply → Applied → 
+                  Interview → Offer / Rejected.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Stats dashboard — total and per-status counts.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Prisma v7 with pg adapter — 
+                  modern ORM setup.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Docker Compose for local development.</span></li>
+        </ul>
+        <div class="modal-actions">
+          <a class="link-btn primary" 
+             href="https://github.com/Mhamd021/job-tracker" 
+             target="_blank" rel="noreferrer">
+            GitHub <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <body>
     <header class="site-header">
@@ -933,6 +1022,31 @@
                             Live Demo <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         </a>
                         <button class="detail-btn" type="button" onclick="openmodal('tshirt-tool')">
+                            Details <i class="fas fa-images" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3 class="project-title">Job Application Tracker</h3>
+                        <ul class="tag-list" aria-label="Job Application Tracker stack">
+                            <li class="tag">NestJS</li>
+                            <li class="tag">GraphQL</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Prisma</li>
+                            <li class="tag">Next.js</li>
+                            <li class="tag">Docker</li>
+                        </ul>
+                    </div>
+                    <p class="project-desc">
+                        Full-stack job application tracker built to manage my own Germany job search. GraphQL API with JWT auth, stats dashboard, and status filtering.
+                    </p>
+                    <div class="project-links">
+                        <a class="link-btn" href="https://github.com/Mhamd021/job-tracker" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <button class="detail-btn" type="button" onclick="openmodal('job-tracker')">
                             Details <i class="fas fa-images" aria-hidden="true"></i>
                         </button>
                     </div>
