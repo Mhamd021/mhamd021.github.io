@@ -818,6 +818,82 @@
         }
     </style>
 </head>
+<div id="waitless" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h2>Waitless &mdash; Digital Queue System</h2>
+        <ul class="tag-list">
+          <li class="tag">NestJS</li>
+          <li class="tag">Bull Queue</li>
+          <li class="tag">Socket.IO</li>
+          <li class="tag">PostgreSQL</li>
+          <li class="tag">Prisma v7</li>
+          <li class="tag">Next.js</li>
+          <li class="tag">Resend</li>
+          <li class="tag">Docker</li>
+        </ul>
+      </div>
+      <button type="button" class="close-btn" 
+              onclick="closeModal('waitless')" aria-label="Close modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="architecture-map">
+        <div class="architecture-node accented">
+          <strong>Real-time Queue Management</strong>
+          <span>Customers join via a link: no app, no login required. Position updates instantly.</span>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>Bull Queue + Resend</strong>
+            <span>Email notifications are queued as Bull jobs for reliable delivery, even if the server restarts.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Socket.IO Real-time</strong>
+            <span>All connected clients update instantly when admin calls next, with no polling needed.</span>
+          </div>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>JWT + Secret Key Auth</strong>
+            <span>Admin is protected by JWT. Registration requires a secret key, so there is no open sign-up.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Customer Token</strong>
+            <span>No login for customers. A UUID token acts as their personal tracking link.</span>
+          </div>
+        </div>
+        <div class="architecture-node">
+          <strong>Docker Compose</strong>
+          <span>PostgreSQL and Redis run in containers, so one command starts the full stack.</span>
+        </div>
+      </div>
+      <div class="modal-copy">
+        <p>
+          Built for small businesses like barbers, clinics, and restaurants to replace physical waiting lines
+          with a digital real-time system.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i><span>Real-time position updates via Socket.IO with no refresh needed.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Bull Queue for reliable email notifications that survive server restarts.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>No customer login. UUID token works as the tracking link.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Admin dashboard with live queue view, call next, and open/close controls.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Prisma v7 with pg adapter for a modern ORM setup.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Multi-queue support: one admin, multiple queues.</span></li>
+        </ul>
+        <div class="modal-actions">
+          <a class="link-btn primary" 
+             href="https://github.com/Mhamd021/waitless" 
+             target="_blank" rel="noreferrer">
+            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="job-tracker" class="modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -1022,6 +1098,33 @@
                             Live Demo <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         </a>
                         <button class="detail-btn" type="button" onclick="openmodal('tshirt-tool')">
+                            Details <i class="fas fa-images" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3 class="project-title">Waitless &mdash; Digital Queue System</h3>
+                        <ul class="tag-list" aria-label="Waitless Digital Queue System stack">
+                            <li class="tag">NestJS</li>
+                            <li class="tag">Bull Queue</li>
+                            <li class="tag">Socket.IO</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Next.js</li>
+                            <li class="tag">Resend</li>
+                        </ul>
+                    </div>
+                    <p class="project-desc">
+                        Real-time queue management system. Business owners manage waiting lines digitally; customers
+                        join via a link, track their position live via WebSocket, and receive email notifications when
+                        their turn approaches.
+                    </p>
+                    <div class="project-links">
+                        <a class="link-btn" href="https://github.com/Mhamd021/waitless" target="_blank" rel="noreferrer">
+                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <button class="detail-btn" type="button" onclick="openmodal('waitless')">
                             Details <i class="fas fa-images" aria-hidden="true"></i>
                         </button>
                     </div>
