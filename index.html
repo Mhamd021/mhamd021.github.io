@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mhamd Ghanoum, Backend Engineer specializing in NestJS, TypeScript, PostgreSQL, Redis, Docker, and production backends. Available for Backend Engineer roles in Germany.">
-    <title>Mhamd Ghanoum — Backend Engineer</title>
+    <meta name="description" content="Mhamd Ghanoum, Backend Engineer specializing in NestJS, TypeScript, PostgreSQL, Redis, Docker, and production backends. Open to relocation in Europe.">
+    <title>Mhamd Ghanoum â€” Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -94,10 +94,30 @@
         }
 
         .brand {
-            display: flex;
-            flex-direction: column;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 226px;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .brand-copy {
+            display: grid;
             gap: 2px;
-            min-width: 172px;
         }
 
         .brand strong {
@@ -301,6 +321,43 @@
             margin-bottom: 36px;
             color: var(--muted);
             font-size: 1rem;
+        }
+
+        .project-tabs {
+            display: inline-flex;
+            gap: 6px;
+            margin-bottom: 22px;
+            padding: 5px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+        }
+
+        .project-tab {
+            min-height: 38px;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 800;
+            padding: 9px 13px;
+            transition: background 160ms ease, color 160ms ease;
+        }
+
+        .project-tab:hover,
+        .project-tab.active {
+            background: var(--surface-3);
+            color: var(--text);
+        }
+
+        .project-panel {
+            display: none;
+        }
+
+        .project-panel.active {
+            display: block;
         }
 
         .projects-grid {
@@ -732,6 +789,12 @@
                 min-width: 0;
             }
 
+            .brand-mark {
+                width: 38px;
+                height: 38px;
+                flex-basis: 38px;
+            }
+
             .nav-links {
                 position: fixed;
                 left: 14px;
@@ -818,178 +881,17 @@
         }
     </style>
 </head>
-<div id="waitless" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <div class="modal-title-wrap">
-        <h2>Waitless &mdash; Digital Queue System</h2>
-        <ul class="tag-list">
-          <li class="tag">NestJS</li>
-          <li class="tag">Bull Queue</li>
-          <li class="tag">Socket.IO</li>
-          <li class="tag">PostgreSQL</li>
-          <li class="tag">Prisma v7</li>
-          <li class="tag">Next.js</li>
-          <li class="tag">Resend</li>
-          <li class="tag">Docker</li>
-        </ul>
-      </div>
-      <button type="button" class="close-btn" 
-              onclick="closeModal('waitless')" aria-label="Close modal">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="architecture-map">
-        <div class="architecture-node accented">
-          <strong>Real-time Queue Management</strong>
-          <span>Customers join via a link: no app, no login required. Position updates instantly.</span>
-        </div>
-        <div class="architecture-branch">
-          <div class="architecture-node">
-            <strong>Bull Queue + Resend</strong>
-            <span>Email notifications are queued as Bull jobs for reliable delivery, even if the server restarts.</span>
-          </div>
-          <div class="architecture-node">
-            <strong>Socket.IO Real-time</strong>
-            <span>All connected clients update instantly when admin calls next, with no polling needed.</span>
-          </div>
-        </div>
-        <div class="architecture-branch">
-          <div class="architecture-node">
-            <strong>JWT + Secret Key Auth</strong>
-            <span>Admin is protected by JWT. Registration requires a secret key, so there is no open sign-up.</span>
-          </div>
-          <div class="architecture-node">
-            <strong>Customer Token</strong>
-            <span>No login for customers. A UUID token acts as their personal tracking link.</span>
-          </div>
-        </div>
-        <div class="architecture-node">
-          <strong>Docker Compose</strong>
-          <span>PostgreSQL and Redis run in containers, so one command starts the full stack.</span>
-        </div>
-      </div>
-      <div class="modal-copy">
-        <p>
-          Built for small businesses like barbers, clinics, and restaurants to replace physical waiting lines
-          with a digital real-time system.
-        </p>
-        <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i><span>Real-time position updates via Socket.IO with no refresh needed.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Bull Queue for reliable email notifications that survive server restarts.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>No customer login. UUID token works as the tracking link.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Admin dashboard with live queue view, call next, and open/close controls.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Prisma v7 with pg adapter for a modern ORM setup.</span></li>
-          <li><i class="fas fa-check-circle"></i><span>Multi-queue support: one admin, multiple queues.</span></li>
-        </ul>
-        <div class="modal-actions">
-          <a class="link-btn primary" 
-             href="https://github.com/Mhamd021/waitless" 
-             target="_blank" rel="noreferrer">
-            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="job-tracker" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <div class="modal-title-wrap">
-        <h2>Job Application Tracker</h2>
-        <ul class="tag-list">
-          <li class="tag">NestJS</li>
-          <li class="tag">GraphQL</li>
-          <li class="tag">PostgreSQL</li>
-          <li class="tag">Prisma v7</li>
-          <li class="tag">Next.js</li>
-          <li class="tag">Docker</li>
-        </ul>
-      </div>
-      <button type="button" class="close-btn" 
-              onclick="closeModal('job-tracker')">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="architecture-map">
-        <div class="architecture-node accented">
-          <strong>Full-Stack Tracker</strong>
-          <span>Built to manage my own Germany job search — 
-                real tool, real use case.</span>
-        </div>
-        <div class="architecture-branch">
-          <div class="architecture-node">
-            <strong>GraphQL API</strong>
-            <span>Code-first with @nestjs/graphql. Queries, 
-                  mutations, and stats in one endpoint.</span>
-          </div>
-          <div class="architecture-node">
-            <strong>JWT Auth</strong>
-            <span>Stateless authentication — register, login, 
-                  protected resolvers.</span>
-          </div>
-        </div>
-        <div class="architecture-branch">
-          <div class="architecture-node">
-            <strong>PostgreSQL + Prisma v7</strong>
-            <span>Two tables: User and Application. 
-                  Prisma pg adapter for direct pool connection.</span>
-          </div>
-          <div class="architecture-node">
-            <strong>Next.js Frontend</strong>
-            <span>Single-page dashboard with stats, 
-                  filters, and CRUD operations.</span>
-          </div>
-        </div>
-        <div class="architecture-node">
-          <strong>Why GraphQL?</strong>
-          <span>One query returns applications + stats + filters — 
-                no multiple REST endpoints needed.</span>
-        </div>
-      </div>
-      <div class="modal-copy">
-        <p>
-          Personal tool built during my Germany job search. 
-          Tracks applications by status, shows stats per category, 
-          and lets me add notes after each interview.
-        </p>
-        <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i>
-            <span>GraphQL API — queries, mutations, stats.</span></li>
-          <li><i class="fas fa-check-circle"></i>
-            <span>JWT authentication with protected resolvers.</span></li>
-          <li><i class="fas fa-check-circle"></i>
-            <span>Status tracking: To Apply → Applied → 
-                  Interview → Offer / Rejected.</span></li>
-          <li><i class="fas fa-check-circle"></i>
-            <span>Stats dashboard — total and per-status counts.</span></li>
-          <li><i class="fas fa-check-circle"></i>
-            <span>Prisma v7 with pg adapter — 
-                  modern ORM setup.</span></li>
-          <li><i class="fas fa-check-circle"></i>
-            <span>Docker Compose for local development.</span></li>
-        </ul>
-        <div class="modal-actions">
-          <a class="link-btn primary" 
-             href="https://github.com/Mhamd021/job-tracker" 
-             target="_blank" rel="noreferrer">
-            GitHub <i class="fas fa-external-link-alt"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <body>
     <header class="site-header">
         <nav class="nav-shell" aria-label="Primary navigation">
             <a class="brand" href="#home" aria-label="Mhamd Ghanoum home">
-                <strong>Mhamd Ghanoum</strong>
-                <span>Backend Engineer · Germany-ready</span>
+                <span class="brand-mark" aria-hidden="true">MG</span>
+                <span class="brand-copy">
+                    <strong>Mhamd Ghanoum</strong>
+                    <span>Backend Engineer</span>
+                </span>
             </a>
             <div class="nav-links">
                 <a class="nav-link active" href="#home">Home</a>
@@ -1006,13 +908,13 @@
     <main>
         <section class="hero" id="home">
             <div class="hero-inner">
-                <p class="availability">Open to work — relocating to Germany</p>
+                <p class="availability">Open to relocation in Europe</p>
                 <h1>Backend Engineer</h1>
-                <p class="hero-stack">NestJS · TypeScript · PostgreSQL · Redis · Docker</p>
+                <p class="hero-stack">NestJS آ· TypeScript آ· PostgreSQL آ· Redis آ· Docker</p>
                 <p class="hero-copy">
-                    4+ years building production backends for e-commerce, real-time delivery, and mobile platforms.
-                    Specialized in event-driven architecture, WebSocket orchestration, and containerized deployments.
-                    Seeking Backend Engineer roles in Germany.
+                    Backend engineer specialized in TypeScript and NestJS, with strong PostgreSQL and event-driven
+                    architecture experience. I independently design and ship production-grade backend systems,
+                    including real-time delivery orchestration and live SaaS-style queue management.
                 </p>
                 <div class="hero-actions">
                     <a class="btn primary" href="#projects">View Projects</a>
@@ -1033,6 +935,16 @@
                 A focused portfolio for backend roles: architecture, data consistency, real-time systems, and deployment.
             </p>
 
+            <div class="project-tabs" role="tablist" aria-label="Project categories">
+                <button class="project-tab active" type="button" role="tab" aria-selected="true" aria-controls="backend-projects" data-project-tab="backend-projects">
+                    NestJS / Backend
+                </button>
+                <button class="project-tab" type="button" role="tab" aria-selected="false" aria-controls="other-projects" data-project-tab="other-projects">
+                    Others
+                </button>
+            </div>
+
+            <div id="backend-projects" class="project-panel active" role="tabpanel">
             <div class="projects-grid">
                 <article class="project-card featured">
                     <div class="project-top">
@@ -1087,8 +999,9 @@
                         </ul>
                     </div>
                     <p class="project-desc">
-                        Interactive web-based product configurator with real-time 3D rendering. UV-mapped model built in
-                        Blender, rendered via Three.js. NestJS backend handles design persistence and asset management.
+                        Live web-based product configurator with real-time 3D customization for color, image decals,
+                        and text. NestJS handles design persistence, asset storage, and provider-abstracted AI design
+                        suggestions through Ollama or OpenAI.
                     </p>
                     <div class="project-links">
                         <a class="link-btn" href="https://github.com/Mhamd021/3d-tshirt-tool" target="_blank" rel="noreferrer">
@@ -1108,17 +1021,17 @@
                         <h3 class="project-title">Waitless &mdash; Digital Queue System</h3>
                         <ul class="tag-list" aria-label="Waitless Digital Queue System stack">
                             <li class="tag">NestJS</li>
-                            <li class="tag">Bull Queue</li>
+                            <li class="tag">Redis</li>
+                            <li class="tag">BullMQ</li>
                             <li class="tag">Socket.IO</li>
                             <li class="tag">PostgreSQL</li>
                             <li class="tag">Next.js</li>
-                            <li class="tag">Resend</li>
                         </ul>
                     </div>
                     <p class="project-desc">
-                        Real-time queue management system. Business owners manage waiting lines digitally; customers
-                        join via a link, track their position live via WebSocket, and receive email notifications when
-                        their turn approaches.
+                        Live queue management platform replacing physical waiting lines with QR/link-based digital
+                        queues. WebSockets push position updates only on real state changes, while BullMQ keeps email
+                        notifications asynchronous and restart-safe.
                     </p>
                     <div class="project-links">
                         <a class="link-btn" href="https://github.com/Mhamd021/waitless" target="_blank" rel="noreferrer">
@@ -1129,30 +1042,6 @@
                         </button>
                     </div>
                 </article>
-
-                <article class="project-card">
-                    <div>
-                        <h3 class="project-title">Collaborative Code Editor</h3>
-                        <ul class="tag-list" aria-label="Collaborative Code Editor stack">
-                            <li class="tag">NestJS</li>
-                            <li class="tag">Operational Transformation</li>
-                            <li class="tag">Socket.IO</li>
-                            <li class="tag">Redis</li>
-                            <li class="tag">Next.js</li>
-                            <li class="tag">CodeMirror</li>
-                        </ul>
-                    </div>
-                    <p class="project-desc">
-                        Real-time collaborative code editor using Operational Transformation — the same algorithm behind Google Docs. Share a room URL and start coding together instantly. No login required.
-                    </p>
-                    <div class="project-links">
-                        <a class="link-btn" href="https://github.com/Mhamd021/code-notepad" target="_blank" rel="noreferrer">
-                            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                        </a>
-                       
-                    </div>
-                </article>
-
                 <article class="project-card">
                     <div>
                         <h3 class="project-title">Job Application Tracker</h3>
@@ -1166,7 +1055,8 @@
                         </ul>
                     </div>
                     <p class="project-desc">
-                        Full-stack job application tracker built to manage my own Germany job search. GraphQL API with JWT auth, stats dashboard, and status filtering.
+                        Full-stack tracker built to manage a real Germany job search, with a code-first GraphQL API,
+                        stats dashboard, and status pipeline through the application lifecycle.
                     </p>
                     <div class="project-links">
                         <a class="link-btn" href="https://github.com/Mhamd021/job-tracker" target="_blank" rel="noreferrer">
@@ -1178,6 +1068,11 @@
                     </div>
                 </article>
 
+            </div>
+            </div>
+
+            <div id="other-projects" class="project-panel" role="tabpanel">
+            <div class="projects-grid">
                 <article class="project-card">
                     <div>
                         <h3 class="project-title">Multi-Store E-Commerce Platform</h3>
@@ -1189,8 +1084,9 @@
                         </ul>
                     </div>
                     <p class="project-desc">
-                        Full-stack multi-store platform with role-based access (Admin, Store Manager, Delivery, Customer),
-                        order lifecycle management, map-based delivery tracking, and real-time notifications via Pusher.
+                        Earlier Laravel full-stack product with role-based access, order lifecycle management,
+                        delivery workflows, maps, and real-time notifications. Part of the 2021-2024 foundation before
+                        specializing fully in NestJS.
                     </p>
                     <div class="project-links">
                         <a class="link-btn" href="https://github.com/Mhamd021/E-commerce" target="_blank" rel="noreferrer">
@@ -1213,8 +1109,8 @@
                         </ul>
                     </div>
                     <p class="project-desc">
-                        Social platform for sharing travel journeys. Laravel backend with REST API, Flutter mobile client,
-                        Mapbox route visualization, real-time chat and notifications via Pusher.
+                        Earlier Laravel and Flutter social platform for sharing travel journeys, with REST APIs,
+                        route visualization, real-time chat, and notifications.
                     </p>
                     <div class="project-links">
                         <a class="link-btn" href="https://github.com/Mhamd021/journey-dashboard" target="_blank" rel="noreferrer">
@@ -1225,6 +1121,7 @@
                         </button>
                     </div>
                 </article>
+            </div>
             </div>
         </section>
 
@@ -1244,9 +1141,10 @@
                         <span>Node.js</span>
                         <span>Laravel (PHP)</span>
                         <span>REST API</span>
+                        <span>GraphQL</span>
                         <span>WebSockets (Socket.IO)</span>
+                        <span>BullMQ</span>
                         <span>JWT</span>
-                        <span>Event-Driven</span>
                     </div>
                 </article>
 
@@ -1255,11 +1153,24 @@
                     <div class="skill-tags">
                         <span>PostgreSQL</span>
                         <span>Prisma ORM</span>
-                        <span>MySQL</span>
                         <span>Redis</span>
+                        <span>MongoDB (in progress)</span>
+                        <span>Query Optimization</span>
+                        <span>Schema Design</span>
                         <span>Cache-Aside</span>
                         <span>Write-Behind</span>
-                        <span>TTL</span>
+                    </div>
+                </article>
+
+                <article class="skill-group">
+                    <h3>Architecture</h3>
+                    <div class="skill-tags">
+                        <span>Event-Driven Systems</span>
+                        <span>CQRS-Style Projections</span>
+                        <span>Domain Modeling</span>
+                        <span>Batch Processing</span>
+                        <span>State Machines</span>
+                        <span>Consistency Models</span>
                     </div>
                 </article>
 
@@ -1290,15 +1201,23 @@
             <div class="contact-panel">
                 <div>
                     <p class="section-kicker">Contact</p>
-                    <h2 class="section-title">Available for Germany.</h2>
+                    <h2 class="section-title">Available for Europe.</h2>
                     <p class="contact-note">
-                        Available for Backend Engineer roles — English (C1) · German (B1, B2 in progress)
+                        Backend Engineer roles آ· English professional B2/C1 آ· German B1, B2 in preparation.
                     </p>
                 </div>
                 <div class="contact-list">
                     <div class="contact-item">
                         <i class="fas fa-envelope" aria-hidden="true"></i>
                         <a href="mailto:mhamdghanoum82@gmail.com">mhamdghanoum82@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+963988114203">+963 988 114 203</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                        <a href="https://mhamd021.github.io" target="_blank" rel="noreferrer">mhamd021.github.io</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-github" aria-hidden="true"></i>
@@ -1310,12 +1229,178 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <span>Syria — Open to relocation in Germany</span>
+                        <span>Syria آ· Open to relocation in Europe</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+<div id="waitless" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h2>Waitless &mdash; Digital Queue System</h2>
+        <ul class="tag-list">
+          <li class="tag">NestJS</li>
+          <li class="tag">Redis</li>
+          <li class="tag">BullMQ</li>
+          <li class="tag">Socket.IO</li>
+          <li class="tag">PostgreSQL</li>
+          <li class="tag">Prisma v7</li>
+          <li class="tag">Next.js</li>
+          <li class="tag">Docker</li>
+        </ul>
+      </div>
+      <button type="button" class="close-btn"
+              onclick="closeModal('waitless')" aria-label="Close modal">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="architecture-map">
+        <div class="architecture-node accented">
+          <strong>Real-time Queue Management</strong>
+          <span>Customers join via a link: no app, no login required. Position updates instantly.</span>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>BullMQ + Redis</strong>
+            <span>Email notifications are queued as restart-safe background jobs.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Socket.IO Real-time</strong>
+            <span>All connected clients update instantly when admin calls next, with no polling needed.</span>
+          </div>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>JWT + Secret Key Auth</strong>
+            <span>Admin is protected by JWT. Registration requires a secret key, so there is no open sign-up.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Customer Token</strong>
+            <span>No login for customers. A UUID token acts as their personal tracking link.</span>
+          </div>
+        </div>
+        <div class="architecture-node">
+          <strong>Docker Compose</strong>
+          <span>PostgreSQL and Redis run in containers, so one command starts the full stack.</span>
+        </div>
+      </div>
+      <div class="modal-copy">
+        <p>
+          Built for small businesses like barbers, clinics, and restaurants to replace physical waiting lines
+          with a digital real-time system.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i><span>Real-time position updates via Socket.IO with no refresh needed.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>BullMQ and Redis for reliable email notifications that survive server restarts.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>No customer login. UUID token works as the tracking link.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Admin dashboard with live queue view, call next, and open/close controls.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>UUID-based customer tracking tokens, so customers do not need accounts.</span></li>
+          <li><i class="fas fa-check-circle"></i><span>Multi-queue support: one admin, multiple queues.</span></li>
+        </ul>
+        <div class="modal-actions">
+          <a class="link-btn primary"
+             href="https://github.com/Mhamd021/waitless"
+             target="_blank" rel="noreferrer">
+            GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="job-tracker" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h2>Job Application Tracker</h2>
+        <ul class="tag-list">
+          <li class="tag">NestJS</li>
+          <li class="tag">GraphQL</li>
+          <li class="tag">PostgreSQL</li>
+          <li class="tag">Prisma v7</li>
+          <li class="tag">Next.js</li>
+          <li class="tag">Docker</li>
+        </ul>
+      </div>
+      <button type="button" class="close-btn"
+              onclick="closeModal('job-tracker')">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="architecture-map">
+        <div class="architecture-node accented">
+          <strong>Full-Stack Tracker</strong>
+          <span>Built to manage my own Germany job search â€”
+                real tool, real use case.</span>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>GraphQL API</strong>
+            <span>Code-first with @nestjs/graphql. Queries,
+                  mutations, and stats in one endpoint.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>JWT Auth</strong>
+            <span>Stateless authentication â€” register, login,
+                  protected resolvers.</span>
+          </div>
+        </div>
+        <div class="architecture-branch">
+          <div class="architecture-node">
+            <strong>PostgreSQL + Prisma v7</strong>
+            <span>Two tables: User and Application.
+                  Prisma pg adapter for direct pool connection.</span>
+          </div>
+          <div class="architecture-node">
+            <strong>Next.js Frontend</strong>
+            <span>Single-page dashboard with stats,
+                  filters, and CRUD operations.</span>
+          </div>
+        </div>
+        <div class="architecture-node">
+          <strong>Why GraphQL?</strong>
+          <span>One query returns applications + stats + filters â€”
+                no multiple REST endpoints needed.</span>
+        </div>
+      </div>
+      <div class="modal-copy">
+        <p>
+          Personal tool built during my Germany job search.
+          Tracks applications by status, shows stats per category,
+          and lets me add notes after each interview.
+        </p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i>
+            <span>GraphQL API â€” queries, mutations, stats.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>JWT authentication with protected resolvers.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Status tracking: To Apply â†’ Applied â†’
+                  Interview â†’ Offer / Rejected.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Stats dashboard â€” total and per-status counts.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Prisma v7 with pg adapter â€”
+                  modern ORM setup.</span></li>
+          <li><i class="fas fa-check-circle"></i>
+            <span>Docker Compose for local development.</span></li>
+        </ul>
+        <div class="modal-actions">
+          <a class="link-btn primary"
+             href="https://github.com/Mhamd021/job-tracker"
+             target="_blank" rel="noreferrer">
+            GitHub <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div id="delivery-backend" class="modal">
         <div class="modal-content">
@@ -1572,6 +1657,22 @@
 
         themeBtn.addEventListener("click", () => {
             document.body.classList.toggle("light-mode");
+        });
+
+        document.querySelectorAll(".project-tab").forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const targetId = tab.dataset.projectTab;
+
+                document.querySelectorAll(".project-tab").forEach((button) => {
+                    const isActive = button === tab;
+                    button.classList.toggle("active", isActive);
+                    button.setAttribute("aria-selected", String(isActive));
+                });
+
+                document.querySelectorAll(".project-panel").forEach((panel) => {
+                    panel.classList.toggle("active", panel.id === targetId);
+                });
+            });
         });
 
         function setActiveNav(id) {
