@@ -21,20 +21,6 @@
   --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
 }
 
-.light-mode {
-  --color-primary: #FFFFFF;
-  --color-secondary: #F56692;
-  --color-white: #0b0b0bd8;
-  --color-black: #000;
-  --color-grey0: #f8f8f8;
-  --color-grey-1: #6c7983;
-  --color-grey-2: #6c7983;
-  --color-grey-3: #6c7983;
-  --color-grey-4: #454e56;
-  --color-grey-5: #f8f8f8;
-  --color-grey-6: #12181b;
-}
-
 body {
   background-color: var(--color-primary);
   font-family: "Poppins", sans-serif;
@@ -121,30 +107,6 @@ section {
 }
 .controls .active-btn i {
   color: var(--color-white);
-}
-
-.theme-btn {
-  top: 5%;
-  right: 3%;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: var(--color-grey-4);
-  cursor: pointer;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.1s ease-in-out;
-}
-.theme-btn:active {
-  transform: translateY(-3px);
-}
-.theme-btn i {
-  font-size: 1.4rem;
-  color: var(--color-grey-2);
-  pointer-events: none;
 }
 
 /*Header-content*/
@@ -784,73 +746,14 @@ section {
     color: #333 !important;
 }
 
-/* If you use a dark theme, override only background, not text */
-body.dark-mode .modern-modal-content,
-body.dark-mode .modal-content {
-    background: #222 !important;
-    color: #fff !important;
-}
-body.dark-mode .modal-header h2,
-body.dark-mode .tech-badges .badge,
-body.dark-mode .project-overview,
-body.dark-mode .feature-list li,
-body.dark-mode .modal-actions .action-btn {
-    color: #fff !important;
-}
-
 /* Force project card titles to stay black in all modes */
 .project-content h3 {
     color: #111 !important;
-}
-body.dark-mode .project-content h3 {
-    color: #111 !important;
-}
-
-/* Invert project card colors for light/dark mode */
-.light-mode .project-card {
-    background: #222 !important;
-    color: #fff !important;
-}
-.light-mode .project-card h3,
-.light-mode .project-card .tech-stack,
-.light-mode .project-card .project-desc,
-.light-mode .project-card .action-btn {
-    color: #fff !important;
-}
-.light-mode .project-card .action-btn {
-    background: #444;
-}
-.light-mode .project-card .action-btn:hover {
-    background: #2dc4c9;
-}
-
-/* Keep dark mode as white cards with dark text */
-body.dark-mode .project-card {
-    background: #fff !important;
-    color: #222 !important;
-}
-body.dark-mode .project-card h3,
-body.dark-mode .project-card .tech-stack,
-body.dark-mode .project-card .project-desc,
-body.dark-mode .project-card .action-btn {
-    color: #222 !important;
-}
-body.dark-mode .project-card .action-btn {
-    background: #007bff;
-    color: #fff;
-}
-body.dark-mode .project-card .action-btn:hover {
-    background: #0056b3;
 }
 
 @media screen and (max-width: 600px) {
   header {
     padding: 0 !important;
-  }
-
-  .theme-btn {
-    width: 50px;
-    height: 50px;
   }
 
   .header-content {
@@ -1380,15 +1283,6 @@ button
     box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 4px 24px rgba(0,0,0,0.18);
 }
 
-/* Dark mode support: even stronger shadow for contrast */
-body.dark-mode .project-card {
-    background: #222;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 2px 12px rgba(0,0,0,0.38);
-}
-body.dark-mode .project-card:hover {
-    box-shadow: 0 16px 48px rgba(0,0,0,0.75), 0 4px 24px rgba(0,0,0,0.55);
-}
-
 .blender-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -1502,7 +1396,7 @@ body.dark-mode .project-card:hover {
         gap: 0.5rem;
         padding: 0.5rem;
     }
-    .action-btn, .close-btn, .theme-btn {
+    .action-btn, .close-btn {
         font-size: 1rem;
         padding: 0.7rem 1.2rem;
         border-radius: 10px;
