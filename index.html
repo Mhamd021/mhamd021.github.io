@@ -29,7 +29,7 @@
         <nav class="nav-shell" aria-label="Primary navigation">
             <a class="brand" href="#home" aria-label="Mhamd Ghanoum home">
                 <span class="brand-emblem">
-                    <img src="logo-light.png" alt="Mhamd Ghanoum phoenix logo">
+                    <img src="logo-lighter.png" alt="Mhamd Ghanoum phoenix logo">
                 </span>
                 <span class="brand-copy">
                     <strong>Mhamd Ghanoum</strong>
@@ -41,6 +41,7 @@
                 <a class="nav-link" href="#about">About</a>
                 <a class="nav-link" href="#projects">Projects</a>
                 <a class="nav-link" href="#skills">Skills</a>
+                <a class="nav-link" href="#articles">Writing</a>
                 <a class="nav-link" href="#contact">Contact</a>
             </div>
             <a class="nav-cta" href="Mhamd_Ghanoum_CV.pdf" download="Mhamd_Ghanoum_Resume.pdf">CV</a>
@@ -71,8 +72,8 @@
                         <a class="btn ghost" href="https://github.com/Mhamd021" target="_blank" rel="noreferrer">
                             GitHub <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         </a>
-                        <a class="btn ghost mobile-cv-btn" href="Mhamd_Ghanoum_CV.pdf" download="Mhamd_Ghanoum_Resume.pdf">
-                            CV <i class="fas fa-download" aria-hidden="true"></i>
+                        <a class="btn primary mobile-cv-btn" href="Mhamd_Ghanoum_CV.pdf" download="Mhamd_Ghanoum_Resume.pdf">
+                            CV 
                         </a>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                     <div class="orbit orbit-one"></div>
                     <div class="orbit orbit-two"></div>
                     <div class="logo-energy">
-                        <img src="logo-light.png" alt="Mhamd Ghanoum phoenix logo">
+                        <img src="logo-lighter.png" alt="Mhamd Ghanoum phoenix logo">
                     </div>
                     <span class="logo-particle lp1"></span>
                     <span class="logo-particle lp2"></span>
@@ -352,7 +353,59 @@
             </div>
         </section>
 
-        
+        <section id="articles" class="reveal">
+  <div class="section-heading">
+    <p class="section-kicker">Writing</p>
+    <h2 class="section-title">Thinking out loud.</h2>
+    <p class="section-intro">
+      System design concepts I'm actively learning and applying —
+      written to understand them deeply, not just to explain them.
+    </p>
+  </div>
+
+  <div class="articles-grid">
+
+    <a class="article-card"
+       href="https://dev.to/don21/sql-vs-nosql-how-to-choose-the-right-database-for-your-system-2iic"
+       target="_blank" rel="noreferrer">
+      <div class="article-body">
+        <p class="article-tag">Database Design</p>
+        <h3 class="article-title">SQL vs NoSQL — How to Choose the Right Database for Your System</h3>
+        <p class="article-desc">When to use each, how I combine both in real projects, and the hybrid approach I used in my delivery backend.</p>
+      </div>
+      <div class="article-footer">
+        Read on Dev.to <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
+    <a class="article-card"
+       href="https://dev.to/don21/understanding-sql-transactions-acid-isolation-levels-and-how-to-handle-locks-24g3"
+       target="_blank" rel="noreferrer">
+      <div class="article-body">
+        <p class="article-tag">Database Internals</p>
+        <h3 class="article-title">Understanding SQL Transactions: ACID, Isolation Levels, and How to Handle Locks</h3>
+        <p class="article-desc">ACID guarantees, isolation levels, and how getting this wrong causes real production bugs.</p>
+      </div>
+      <div class="article-footer">
+        Read on Dev.to <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
+    <a class="article-card"
+       href="https://dev.to/don21/indexing-query-optimization-how-to-make-your-database-fast-5elp"
+       target="_blank" rel="noreferrer">
+      <div class="article-body">
+        <p class="article-tag">Performance</p>
+        <h3 class="article-title">Indexing & Query Optimization: How to Make Your Database Fast</h3>
+        <p class="article-desc">How indexes work under the hood, when to add them, when not to, and the real cost of over-indexing.</p>
+      </div>
+      <div class="article-footer">
+        Read on Dev.to <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
+  </div>
+</section>
 
         <section id="contact" class="reveal">
             <div class="contact-panel">
@@ -407,6 +460,14 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="image-slider" data-slider-id="delivery-backend">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="img/backend-arc.PNG" alt="E-Commerce Delivery Backend architecture overview">
+                        </div>
+                    </div>
+                   
+                </div>
                 <div class="modal-copy">
                     <p>Backend-focused delivery system for customer ordering, vendor fulfillment, deliverer location updates, and admin operations.</p>
                     <ul class="feature-list">
@@ -420,14 +481,7 @@
                         <a class="link-btn primary" href="https://github.com/Mhamd021/Mesyaf-Market" target="_blank" rel="noreferrer">GitHub</a>
                     </div>
                 </div>
-                <div class="image-slider" data-slider-id="delivery-backend">
-                    <div class="slides">
-                        <div class="slide">
-                            <img src="img/backend-arc.PNG" alt="E-Commerce Delivery Backend architecture overview">
-                        </div>
-                    </div>
-                   
-                </div>
+                
             </div>
             <div class="architecture-map">
                 <div class="architecture-node accented">
