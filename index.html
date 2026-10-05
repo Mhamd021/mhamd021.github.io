@@ -357,6 +357,32 @@
   </div>
 
   <div class="articles-grid">
+
+    <a class="article-card"
+       href="https://coderlegion.com/29812/why-i-chose-a-simple-capability-token-for-waitless-and-when-i-would-harden-it"
+       target="_blank" rel="noreferrer">
+      <div class="article-body">
+        <p class="article-tag">Security</p>
+        <h3 class="article-title">Why I Chose a Simple Capability Token for Waitless — and When I Would Harden It</h3>
+        <p class="article-desc">Capability URLs vs sequential IDs, UUIDv4 vs UUIDv7, and the trade-off between anonymous access and session-based identity.</p>
+      </div>
+      <div class="article-footer">
+        Read on Coderlegion <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+    <a class="article-card"
+       href="https://coderlegion.com/29737/why-i-used-bullmq-redis-for-background-jobs-in-my-nestjs-application-and-when-i-wouldnt"
+       target="_blank" rel="noreferrer">
+      <div class="article-body">
+        <p class="article-tag">Backend Architecture</p>
+        <h3 class="article-title">Why I Used BullMQ + Redis for Background Jobs in My NestJS Application — and When I Wouldn't</h3>
+        <p class="article-desc">Workload-driven architecture: why queue workloads shouldn't always share a database with transactional data, and when they should.</p>
+      </div>
+      <div class="article-footer">
+        Read on Coderlegion <i class="fas fa-external-link-alt"></i>
+      </div>
+    </a>
+
     <a class="article-card"
        href="https://coderlegion.com/21940/how-i-used-postgresql-events-and-mongodb-event-logs-in-two-different-real-world-systems"
        target="_blank" rel="noreferrer">
@@ -419,7 +445,7 @@
                     <p class="section-kicker">Contact</p>
                     <h2 class="section-title">Available for backend roles in Europe.</h2>
                     <p class="contact-note">
-                        Backend Engineer roles &bull; English professional B2/C1 &bull; German B2
+                        Backend Engineer roles &bull; English professional B2/C1 &bull; B2 ÖSD certified
                     </p>
                 </div>
                 <div class="contact-list">
@@ -590,7 +616,7 @@
                     <h2>Waitless - Digital Queue System</h2>
                     <ul class="tag-list">
                         <li class="tag">NestJS</li><li class="tag">Redis</li><li class="tag">BullMQ</li>
-                        <li class="tag">Socket.IO</li><li class="tag">PostgreSQL</li><li class="tag">Next.js</li>
+                        <li class="tag">Socket.IO</li><li class="tag">PostgreSQL</li><li class="tag">MongoDB</li><li class="tag">Next.js</li>
                     </ul>
                 </div>
                 <button type="button" class="close-btn" onclick="closeModal('waitless')" aria-label="Close modal">
@@ -605,7 +631,7 @@
                     
                 </div>
                 <div class="modal-copy">
-                    <p>Live queue management platform replacing physical waiting lines with QR/link-based digital queues.</p>
+                    <p>Barbers, food shops, and other walk-in businesses still manage waiting lines with a paper sign-in sheet or by calling names out loud — customers don't know how long they'll wait, and owners have no record of no-shows or performance. Waitless replaces that with a digital queue: customers join by QR code or link, no account needed, and track their position live.</p>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i><span>WebSockets push position updates only on real state changes.</span></li>
                         <li><i class="fas fa-check-circle"></i><span>BullMQ keeps email notifications asynchronous and restart-safe.</span></li>
@@ -638,17 +664,21 @@
             <span>Admin is protected by JWT. Registration requires a secret key, so there is no open sign-up.</span>
           </div>
           <div class="architecture-node">
-            <strong>Customer Token</strong>
-            <span>No login for customers. A UUID token acts as their personal tracking link.</span>
+            <strong>Capability-URL Tokens</strong>
+            <span>No login for customers.The tracking token is a deliberate "security by unguessability" choice, not just a convenience ID — a UUIDv4 capability credential, not a sequential identifier.</span>
           </div>
         </div>
         <div class="architecture-node">
           <strong>MongoDB</strong>
           <span>MongoDB as a dedicated event log. each queue action  written as a document with flexible per-event metadata, then aggregated via MongoDB pipeline to produce live no-show rate, completion rate, and drop-off rate per queue.</span>
         </div>
+         <div class="architecture-node">
+          <strong>Atomic Position Assignment</strong>
+          <span>Position updates are handled atomically to ensure data consistency.</span>
+        </div>
         <div class="architecture-node">
           <strong>Docker Compose</strong>
-          <span>PostgreSQL and Redis run in containers, so one command starts the full stack.</span>
+          <span>PostgreSQL,MongoDB and Redis run in containers, so one command starts the full stack.</span>
         </div>
       </div>
         </div>
