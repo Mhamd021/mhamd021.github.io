@@ -158,9 +158,7 @@
                             <span class="badge">Featured Project</span>
                             <h3 class="project-title">E-Commerce Delivery Backend</h3>
                             <p class="project-desc">
-                                Production-ready backend for a 4-role delivery platform: Customer, Vendor, Deliverer,
-                                and Admin. Built from scratch with batch ordering, immutable event log, CQRS-style
-                                projections, real-time namespaces, Redis location patterns, and Docker Compose.
+                                Backend for a 4-role delivery platform (Customer, Vendor, Deliverer, Admin). Orders are batched, assigned to the nearest available deliverer through BullMQ workers, and tracked in real time. Built around correctness under failure: transactional event writes, race-safe batching and assignment, replayable reconnects.
                             </p>
                             <ul class="tag-list" aria-label="E-Commerce Delivery Backend stack">
                                 <li class="tag">NestJS</li>
@@ -494,19 +492,19 @@
                 <div class="image-slider" data-slider-id="delivery-backend">
                     <div class="slides">
                         <div class="slide">
-                            <img src="img/backend-arc.PNG" alt="E-Commerce Delivery Backend architecture overview">
+                            <img src="img/delivery-backend.png" alt="E-Commerce Delivery Backend architecture overview">
                         </div>
                     </div>
                    
                 </div>
                 <div class="modal-copy">
-                    <p>Backend-focused delivery system for customer ordering, vendor fulfillment, deliverer location updates, and admin operations.</p>
+                    <p>Backend for customer ordering, vendor fulfillment, batched deliverer assignment, live tracking and admin operations. Backend only, running under Docker Compose behind Nginx.</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i><span>Batch order engine for multi-vendor delivery flows.</span></li>
-                        <li><i class="fas fa-check-circle"></i><span>Immutable event log with CQRS projections.</span></li>
-                        <li><i class="fas fa-check-circle"></i><span>Three Socket.IO namespaces with JWT auth and reconnect-replay.</span></li>
-                        <li><i class="fas fa-check-circle"></i><span> Redis Cache-Aside and Write-Behind patterns for location data.</span></li>
-                        <li><i class="fas fa-check-circle"></i><span>Docker Compose deployment for production-like environments.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Batch engine with per-city rules (window, size, delay limit), closed by delayed BullMQ jobs with a sweep as safety net.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Event log with replayable timeline projections; every state change and its event commit in one transaction.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Three Socket.IO namespaces with JWT on the handshake, context snapshot and event replay on reconnect.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Redis for live locations (cache-aside reads, write-behind to Postgres) and for atomic rate-limit counters.</span></li>
+                        <li><i class="fas fa-check-circle"></i><span>Docker Compose with Nginx, TLS and WebSocket proxying.</span></li>
                     </ul>
                     <div class="modal-actions">
                         <a class="link-btn primary" href="https://github.com/Mhamd021/Mesyaf-Market" target="_blank" rel="noreferrer">GitHub</a>
@@ -516,27 +514,27 @@
             </div>
             <div class="architecture-map">
                 <div class="architecture-node accented">
-                    <strong>Delivery Platform Core</strong>
-                    <span>Customer, Vendor, Deliverer, and Admin flows share one event-driven backend.</span>
+                    <strong>Transactional Events</strong>
+                    <span>The order, its event and its timeline row are written in one Prisma transaction, so a failure leaves nothing half-written.</span>
                 </div>
                 <div class="architecture-branch">
                     <div class="architecture-node">
-                        <strong>Event Log</strong>
-                        <span>Immutable facts are written first, then projected into read models for reliable recovery.</span>
+                        <strong>Race-safe Batching</strong>
+                        <span>An advisory lock serializes "find or create a batch", and deliverer, batch and job claims are single conditional updates. Two requests cannot win the same resource.</span>
                     </div>
                     <div class="architecture-node">
-                        <strong>Order Decisions</strong>
-                        <span>Batch order engine validates carts, vendor grouping, status transitions, and delivery assignment.</span>
+                        <strong>Replayable Projections</strong>
+                        <span>Timeline rows carry a unique source event id, so projecting an event twice is harmless and read models can be rebuilt from the log. This is event logging with CQRS-style read models, not full event sourcing.</span>
                     </div>
                 </div>
                 <div class="architecture-branch">
                     <div class="architecture-node">
-                        <strong>Realtime Decisions</strong>
-                        <span>Socket.IO namespaces isolate customer, vendor, and deliverer events with JWT authorization.</span>
+                        <strong>Reconnect and Recovery</strong>
+                        <span>A returning deliverer gets a state snapshot plus missed events. Unstarted jobs from offline deliverers return to the pool, started jobs are escalated to a person.</span>
                     </div>
                     <div class="architecture-node">
                         <strong>Redis Location Layer</strong>
-                        <span>GEO lookups, TTL data, Cache-Aside reads, and Write-Behind persistence support live delivery tracking.</span>
+                        <span>Live positions with a 30-second TTL, cache-aside reads, and write-behind to Postgres on disconnect, job completion and a timer. Assignment ranks by the freshest position.</span>
                     </div>
                 </div>
             </div>
